@@ -90,6 +90,62 @@ h6 {
 
 /*------reset styles end-------*/
 
+@font-face {
+  font-family: "Rubik";
+  font-display: swap;
+  src: url("../fonts/Rubik-Black.woff") format("woff"), url("../fonts/Rubik-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: black;
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-display: swap;
+  src: url("../fonts/Rubik-Bold.woff") format("woff"), url("../fonts/Rubik-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-display: swap;
+  src: url("../fonts/Rubik-Medium.woff") format("woff"), url("../fonts/Rubik-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: medium;
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-display: swap;
+  src: url("../fonts/Rubik-Light.woff") format("woff"), url("../fonts/Rubik-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: light;
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-display: swap;
+  src: url("../fonts/Rubik-Regular.woff") format("woff"), url("../fonts/Rubik-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: regular;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  font-display: swap;
+  src: url("../fonts/HelveticaNeueCyr-Light.woff") format("woff"), url("../fonts/HelveticaNeueCyr-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: light;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  font-display: swap;
+  src: url("../fonts/HelveticaNeueCyr-Bold.woff") format("woff"), url("../fonts/HelveticaNeueCyr-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: bold;
+}
+
 .btn__type-1 {
   font-family: Helvetica;
   font-weight: 300;
@@ -133,7 +189,36 @@ h6 {
   padding: 2px 22px;
 }
 
-.card-type-1__flex {
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu__links-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu__link-wrapper {
+  margin-right: 38px;
+}
+
+.menu__link-wrapper.active {
+  font-weight: bold;
+}
+
+.menu__link-wrapper.laguage {
+  margin-left: 35px;
+}
+
+.menu__link-text {
+  color: #000000;
+  font-family: Rubik;
+}
+
+.card-type-1__flex-wrapper {
   width: 455px;
   height: 589px;
   display: -webkit-box;
@@ -184,7 +269,7 @@ h6 {
 }
 
 * {
-  font-family: Georgia, serif;
+  font-family: Helvetica, Georgia, serif;
   font-weight: 400;
   scroll-behavior: smooth;
 }
@@ -202,4 +287,32 @@ html {
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100vh;
+}
+
+body {
+  background-color: antiquewhite;
+}
+
+.header {
+  height: 88px;
+  padding: 0 30px;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header__logo-wrapper {
+  width: 113px;
+  height: 45px;
+}
+
+.header__img {
+  width: 100%;
 }

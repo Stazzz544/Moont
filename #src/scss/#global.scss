@@ -1,5 +1,5 @@
 *{
-	font-family:  Georgia, serif;
+	font-family:  Helvetica, Georgia, serif;
 	font-weight: 400;
 	scroll-behavior: smooth;
 }
@@ -13,4 +13,7 @@ html{
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+}
+body{
+	background-color:antiquewhite ;
 }

@@ -1,0 +1,24 @@
+.menu {
+	display: flex;
+	&__links-wrapper {
+		display: flex;  
+	}
+
+	&__link-wrapper {
+		margin-right: 38px;
+	}
+	&__link-wrapper.active{
+		 font-weight: bold;
+	}
+	&__link-wrapper.laguage {
+		margin-left: 35px;
+	}
+
+	&__link {
+	}
+
+	&__link-text {
+		color: #000000;
+		font-family: Rubik;
+	}
+}
