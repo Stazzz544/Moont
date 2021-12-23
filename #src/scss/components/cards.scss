@@ -1,0 +1,64 @@
+.card-type-1 {
+	&__wrapper {
+
+	}
+	&__flex{
+		width: 455px;
+		height: 589px;
+		display: flex;
+		flex-direction: column;
+	}
+	&__img-wrapper{
+
+	}
+	&__discription-wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+	&__discription-title {
+		margin-top: 20px;
+		text-align: center;
+		font-family: Helvetica;
+		font-weight: bold;
+		font-size: 22px;
+		line-height: 25px;
+		letter-spacing: 0.1em;
+	}
+	&__discription-text {
+		text-align: center;
+		font-family: Helvetica;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+		line-height: 22px;
+		letter-spacing: 0.1em;
+	}
+	&__discription-button {
+		margin-top: 9px;
+	}
+	&__btn-wrapper{
+		text-align: center;
+	}
+}
+
+
+
+//html Preset
+// <div class="card-type-1">
+// 	<div class="card-type-1__wrapper">
+// 		<div class="card-type-1__flex">
+// 			<div class="card-type-1__img-wrapper">
+// 				<img src="img/test/1.jpg" alt="goods">
+
+// 			</div>
+// 			<div class="card-type-1__discription-wrapper">
+// 				<h3 class="card-type-1__discription-title">hoody, one size M</h3>
+// 				<p class="card-type-1__discription-text">Embroidery, satin, cashemir
+// 				</p>
+// 				<div class="card-type-1__btn-wrapper">
+// 					<button class="card-type-1__discription-button btn__type-1 btn__type-1">buy</button>
+// 				</div>
+// 			</div>
+// 		</div>
+// 	</div>
+// </div>

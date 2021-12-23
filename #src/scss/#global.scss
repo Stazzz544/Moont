@@ -1,0 +1,16 @@
+*{
+	font-family:  Georgia, serif;
+	font-weight: 400;
+	scroll-behavior: smooth;
+}
+
+
+html{
+	scroll-behavior: smooth;
+}
+
+.main-wrapper{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}

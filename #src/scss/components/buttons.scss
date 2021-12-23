@@ -1,0 +1,46 @@
+.btn{
+	//=====button buy=====
+	//ширину и высоту внутренний области меняем с помощью padding на главном классе кнопки
+	&__type-1{
+		font-family: Helvetica;
+		font-weight: 300;
+		font-size: 14px;
+		background-color:transparent;
+		padding: 2px 24px;
+		border: 1px solid #000000;
+		border-radius: 20px;
+		letter-spacing: 0.1em;
+		line-height: 20px;
+	}
+	&__type-1:hover, &__buy:active{
+		background-color: #000000;
+		color: #ffffff;
+	}
+	&__type-1:focus{
+		background-color: #000000;
+		outline: 3px solid #82A9BA;
+		color: #ffffff;
+	}
+	&__type-1:disabled{
+		border:transparent;
+		color: rgb(194, 194, 194);
+	}
+	&__type-1:disabled:hover{
+		border:transparent;
+		background-color:transparent;
+		color: rgb(194, 194, 194);
+	}
+}
+
+.btn1{
+	padding: 2px 24px;
+}
+
+.btn2{
+	padding: 2px 22px;
+}
+
+
+//html Preset
+//Обязательно обернуть в div, иначе кнопку растянет на всю ширину
+//<button class=" btn1 btn__type-1">buy</button>
