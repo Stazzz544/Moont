@@ -15,10 +15,12 @@
 	}
 
 	&__link {
+		font-weight: inherit;
 	}
 
 	&__link-text {
 		color: #000000;
-		font-family: Rubik;
+		font-family: 'Rubik';
+		font-weight: inherit;
 	}
 }

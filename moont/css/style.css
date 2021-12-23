@@ -213,9 +213,14 @@ h6 {
   margin-left: 35px;
 }
 
+.menu__link {
+  font-weight: inherit;
+}
+
 .menu__link-text {
   color: #000000;
-  font-family: Rubik;
+  font-family: 'Rubik';
+  font-weight: inherit;
 }
 
 .card-type-1__flex-wrapper {
@@ -269,7 +274,7 @@ h6 {
 }
 
 * {
-  font-family: Helvetica, Georgia, serif;
+  font-family: Helvetica, serif;
   font-weight: 400;
   scroll-behavior: smooth;
 }
