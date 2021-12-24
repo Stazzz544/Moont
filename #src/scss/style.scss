@@ -3,22 +3,25 @@
 @import 'standart/variables';
 @import 'fonts';
 
-//libs
+//common classes
+@import '#global';
 
 //components
 @import 'components/buttons';
 @import 'components/menu';
 @import 'components/cards';
+@import 'components/header';
+
+//pages
+@import 'home_page';
 
 
-//common classes
-@import '#global';
 
-//blocks
-@import 'header';
+//common blocks
 
 
-//sections
+
+
 
 
 

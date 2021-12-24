@@ -146,6 +146,31 @@ h6 {
   font-style: bold;
 }
 
+* {
+  font-family: Helvetica, serif;
+  font-weight: 400;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.main-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  background-color: antiquewhite;
+}
+
 .btn__type-1 {
   font-family: Helvetica;
   font-weight: 300;
@@ -273,31 +298,6 @@ h6 {
   text-align: center;
 }
 
-* {
-  font-family: Helvetica, serif;
-  font-weight: 400;
-  scroll-behavior: smooth;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.main-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  min-height: 100vh;
-}
-
-body {
-  background-color: antiquewhite;
-}
-
 .header {
   height: 88px;
   padding: 0 30px;
@@ -319,5 +319,57 @@ body {
 }
 
 .header__img {
+  width: 100%;
+}
+
+.promo {
+  position: relative;
+}
+
+.promo__flex-wrapper {
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.promo__flex-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 33.333%;
+          flex: 0 1 33.333%;
+  height: 743px;
+  overflow: hidden;
+}
+
+.promo__img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: 0.4s all;
+  -o-transition: 0.4s all;
+  transition: 0.4s all;
+}
+
+.promo__img:hover {
+  -webkit-transform: scale(1.02);
+      -ms-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.promo__center-logo-wrapper {
+  width: 353px;
+  height: 203px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.promo__center-logo-img {
+  height: 100%;
   width: 100%;
 }
