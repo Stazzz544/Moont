@@ -3,6 +3,9 @@
 @import 'standart/variables';
 @import 'fonts';
 
+//libs
+@import 'lib/swiper-bundle';
+
 //common classes
 @import '#global';
 
@@ -11,6 +14,8 @@
 @import 'components/menu';
 @import 'components/cards';
 @import 'components/header';
+@import 'components/footer';
+
 
 //pages
 @import 'home_page';

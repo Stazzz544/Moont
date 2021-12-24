@@ -1,3 +1,7 @@
+@@include('lib/swiper-bundle.min.js');
+
+
+
 
 //функция для подключения webp
 function testWebP(callback) {
@@ -17,3 +21,13 @@ testWebP(function (support) {
 		document.querySelector('body').classList.add('no-webp');
 	}
 });
+
+
+//slider
+const swiper = new Swiper('.swiper', {
+	speed: 400,
+
+	slidesPerView: 6,
+	spaceBetween: 20,
+	loop: true,
+ });
