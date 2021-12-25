@@ -1,72 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.min.css?24.12.2021">
-</head>
+<!-----------------head------------------------>
+		@@include('html-components/head.html')
 
 <body>
 	<div class="main-wrapper">
 
-
-		<header class="header">
-
-			<div class="header__logo-wrapper">
-				<picture><source srcset="img/header/logo.svg" type="image/webp"><img class="header__img" src="img/header/logo.svg" alt="logo"></picture>
-			</div>
-
-			<nav class='menu'>
-				<ul class="menu__links-wrapper">
-					<li class="menu__link-wrapper active">
-						<a href="#" class="menu__link">
-							<span class="menu__link-text">home</span>
-						</a>
-					</li>
-					<li class="menu__link-wrapper">
-						<a href="#" class="menu__link">
-							<span class="menu__link-text">коллекции</span>
-						</a>
-					</li>
-					<li class="menu__link-wrapper">
-						<a href="#" class="menu__link">
-							<span class="menu__link-text">на продажу</span>
-						</a>
-					</li>
-					<li class="menu__link-wrapper">
-						<a href="#" class="menu__link">
-							<span class="menu__link-text">о бренде</span>
-						</a>
-					</li>
-					<li class="menu__link-wrapper">
-						<a href="#" class="menu__link">
-							<span class="menu__link-text">контакты</span>
-						</a>
-					</li>
-				</ul>
-
-				<ul class="menu__links-wrapper link-divider">
-					<li class="menu__link-wrapper">
-						<a href="#" class="menu__link">
-							<span class="menu__link-text">|</span>
-						</a>
-					</li>
-					<li class="menu__link-wrapper change-language">
-						<a href="#" class="menu__link">
-							<span class="menu__link-text">en</span>
-						</a>
-					</li>
-				</ul>
-
-			</nav>
-
-		</header>
+<!-----------------header------------------------>
+		@@include('html-components/header.html')
 
 <!-----------------home page promo------------------------>
 
-		<main class="promo">
+		<main class="promo fullscreen">
 
 			<div class="promo__flex-wrapper">
 				<div class="promo__flex-item for-huge-screen">
@@ -278,37 +224,14 @@
 
 		</main>
 
-		<footer class="footer">
-			<div class="footer__divider"></div>
-			<div class="footer__flex-wrapper">
-				<div class="footer__flex-group-wrapper email-wrapper">
-					<div class="footer__flex-item">
-						<img class="footer__flex-item-img" src="img/footer/icons/mail.svg" alt="email">
-					</div>
-					<div class="footer__flex-item email-text">
-						<p class="footer__flex-item-text">email to buy</p>
-					</div>
-				</div>
-				<div class="footer__flex-group-wrapper">
-					<a href="#" target="_blank" class="footer__img-wrapper">
-						<img class="footer__flex-item-img" src="img/footer/icons/instagram.svg" alt="instagram">
-					</a>
-					<a href="#" target="_blank" class="footer__img-wrapper">
-						<img class="footer__flex-item-img" src="img/footer/icons/telegram.svg" alt="telegram">
-					</a>
-					<a href="#" target="_blank" class="footer__img-wrapper">
-						<img class="footer__flex-item-img" src="img/footer/icons/pinterest.svg" alt="pinterest">
-					</a>
-					<a href="#" target="_blank" class="footer__img-wrapper">
-						<img class="footer__flex-item-img" src="img/footer/icons/facebook.svg" alt="facebook">
-					</a>
-				</div>
-			</div>
-			<p class="footer__location">St Petersburg Russia</p>
-			<p class="footer__site-owner">All rights reserved, Moont, Olga Volkova, 2021</p>
-		</footer>
+<!-----------------footer------------------------>
+		@@include('html-components/footer.html')
+		
 	</div>
-	<script src="js/script.min.js?07.12.2021"></script>
+
+<!-----------------script------------------------>
+		@@include('html-components/script.html')
+
 </body>
 
 </html> 

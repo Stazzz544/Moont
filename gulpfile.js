@@ -12,7 +12,7 @@ let path = {
 		mailer: project_folder + "/mailer",
 	},
 	src: {  //пути вывода готовых файлов проекта
-		html: [source_folder + "/*.html", "!"+source_folder + "/_*.html"],//исключаем все файлы начинающиеся с символа подчёркивание
+		html: [source_folder + "/**/*.html", "!"+source_folder + "/_*.html"],//исключаем все файлы начинающиеся с символа подчёркивание
 		css: source_folder + "/scss/style.scss",
 		js: source_folder + "/js/script.js",
 		img: source_folder + "/img/**/*.+(png|jpg|gif|ico|svg|webp)",  //две звёздочки означает, что мы будем слушать все подпапки в папке src/img, одна звёздочка - любое название
@@ -70,7 +70,10 @@ function browserSync(params) {//функция обновления нашей �
 
 function html() {
 	return src(path.src.html)//получаем исходник
-		.pipe(fileinclude())
+		.pipe(fileinclude({
+			prefix: '@@',
+			basepath: '#src/'
+		}))
 		.pipe(webphtml())
 		.pipe(dest(path.build.html))//выводим
 		.pipe(browsersync.stream())
