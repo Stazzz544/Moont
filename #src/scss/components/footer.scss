@@ -97,3 +97,15 @@
 		}
 	}
 }
+
+@media(max-width: 500px){
+	.footer {
+		padding: 0 30px 53px 30px;
+		&__flex-item-text {
+			font-size: 15px;
+		}
+		&__site-owner {
+			margin-top: 25px;
+	  }
+	}
+}
