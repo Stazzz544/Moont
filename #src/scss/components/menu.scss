@@ -7,6 +7,11 @@
 	&__link-wrapper {
 		margin-right: 38px;
 	}
+	&__link-wrapper.divider{
+		height: 100%;
+		width: 1px;
+		background-color: #000000;
+	}
 	&__link-wrapper.active{
 		 font-weight: bold;
 	}
@@ -24,3 +29,47 @@
 		font-weight: inherit;
 	}
 }
+
+@media(max-width: 992px){
+	.menu{
+		z-index: 1;
+		position: fixed;
+		flex-direction: column;
+		justify-content: center;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(221, 221, 221, 0.658);
+		transition: all 0.5s;
+		transform: translateY(-100%);
+		height: 100%;
+		
+		&__links-wrapper {
+			flex-direction: column;
+			text-align: center;
+			font-size: 50px;
+			row-gap: 50px;
+		}
+		&__links-wrapper:last-of-type {
+			margin-top: 50px;
+		}
+		&__link-wrapper{
+			margin-right: 0;
+		}
+		&__link-wrapper.divider{
+			width: 140px;
+			height: 2px;
+			margin: 0 auto;
+		}
+		&__menu__link{
+			padding: 10px 0;
+		}
+	}
+
+	.menu.active{
+		transform: translateY(0);
+	}
+	
+}
+

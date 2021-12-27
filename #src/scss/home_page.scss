@@ -4,13 +4,16 @@
 	flex: 1 1 auto;
 	&__flex-wrapper {
 		max-width: 100%;
+		
 		display: flex;
 		position: relative;
+
 	}
 
 	&__flex-item {
 		flex: 0 1 20%;
-		height: 743px;
+		//height: 743px;
+		height: calc(100vh - 88px);
 		overflow: hidden;
 	}
 
@@ -84,7 +87,7 @@
 	}
 }
 
-@media(max-width: 1655px){
+@media(max-width: 1350px){
 	.promo{
 		&__flex-item {
 			flex: 0 1 33.333%;

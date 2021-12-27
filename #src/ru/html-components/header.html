@@ -4,7 +4,13 @@
 		<a href="/"><img class="header__img" src="/img/header/logo.svg" alt="logo"></a>
 	</div>
 
-	<nav class='menu'>
+	<div class="burger" id='burger'>
+		<span class="burger__line up"></span>
+		<span class="burger__line meddle"></span>
+		<span class="burger__line bottom"></span>
+	</div>
+
+	<nav class='menu' id='mainMenu'>
 		<ul class="menu__links-wrapper">
 			<li class="menu__link-wrapper active">
 				<a href="/" class="menu__link">
@@ -33,11 +39,8 @@
 			</li>
 		</ul>
 
-		<ul class="menu__links-wrapper link-divider">
-			<li class="menu__link-wrapper">
-				<a href="#" class="menu__link">
-					<span class="menu__link-text">|</span>
-				</a>
+		<ul class="menu__links-wrapper">
+			<li class="menu__link-wrapper divider">
 			</li>
 			<li class="menu__link-wrapper change-language">
 				<a href="#" class="menu__link">

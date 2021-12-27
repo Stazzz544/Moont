@@ -52,3 +52,23 @@ function activeClassesForNavMenu() {
 		if (locationName === pathName) e.closest('.menu__link-wrapper').classList.add('active');
 	});
 };
+
+//===================================================
+//burger
+
+burger();
+
+function burger() {
+	const burger = document.querySelector('#burger');
+	const body = document.querySelector('body');
+
+	burger.addEventListener('click', () => {
+		
+
+		if (!body.classList.contains('lock')) body.classList.add('lock')
+		else body.classList.remove('lock');
+		document.querySelector('#mainMenu').classList.toggle('active');
+		burger.classList.toggle('active');
+		
+	});
+};
