@@ -83,7 +83,7 @@
 		margin-bottom: 13px;
 	}
 	&__slider-swiper{
-		height: 725px;
+		height: auto;
 		width: 2830px;
 	}
 }
@@ -109,7 +109,7 @@
 
 @media(max-width: 640px){
 	.promo{
-		padding-bottom: 50px;
+		padding-bottom: 20px;
 		&__flex-item {
 			flex: 0 1 100%;
 		}
@@ -117,11 +117,14 @@
 			display: none
 		}
 		&__slider-wrapper{
-			padding-left: 30px;
+			padding: 0px 20px;
 		}
 		&__slider-swiper{
 			width: auto;
+			height: auto;
 		}
+		
+		
 	}
 	.swiper-slide{
 		//width: 375px!important;

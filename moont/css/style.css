@@ -1467,7 +1467,7 @@ html {
 }
 
 .promo__slider-swiper {
-  height: 725px;
+  height: auto;
   width: 2830px;
 }
 
@@ -1977,7 +1977,7 @@ html {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(221, 221, 221, 0.658);
+    background-color: white;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
@@ -2051,7 +2051,7 @@ html {
 
 @media (max-width: 640px) {
   .card-type-1__flex-wrapper {
-    width: 375px;
+    width: 100%;
   }
 
   .footer {
@@ -2082,7 +2082,7 @@ html {
   }
 
   .promo {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
   }
 
   .promo__flex-item {
@@ -2096,11 +2096,12 @@ html {
   }
 
   .promo__slider-wrapper {
-    padding-left: 30px;
+    padding: 0px 20px;
   }
 
   .promo__slider-swiper {
     width: auto;
+    height: auto;
   }
 
   .collection__grid-item.img-1 {

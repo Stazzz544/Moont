@@ -28,14 +28,17 @@ const swiper = new Swiper('.swiper', {
 	spaceBetween: 20,
 	loop: true,
 	breakpoints: {
-		// when window width is >= 320px
+	// when window width is >= 320px
 		320: {
 			slidesPerView: 1,
 		},
 		640: {
-			slidesPerView: 4,
+			slidesPerView: 6,
 		}
-		},
+	},
+	autoplay: {
+		delay: 1500,
+	 },
 });
 
 

@@ -49,8 +49,10 @@
 @media(max-width: 640px){
 	.card-type-1{
 		&__flex-wrapper {
-			width: 375px;
+			width: 100%;
 		}
+		
+		
 	}
 		
 }
