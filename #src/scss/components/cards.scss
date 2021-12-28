@@ -1,12 +1,21 @@
 .card-type-1 {
 	&__flex-wrapper{
 		width: 455px;
-		height: 589px;
+		//height: 700px;
 		display: flex;
 		flex-direction: column;
 	}
+	&__flex-wrapper a{
+		height: 100%;
+	}
 	&__img-wrapper{
-
+		height: 100%
+	}
+	&__img-wrapper img{
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		flex: 1 1
 	}
 	&__discription-wrapper {
 		display: flex;
@@ -37,6 +46,14 @@
 	}
 }
 
+@media(max-width: 640px){
+	.card-type-1{
+		&__flex-wrapper {
+			width: 375px;
+		}
+	}
+		
+}
 
 
 //html Preset

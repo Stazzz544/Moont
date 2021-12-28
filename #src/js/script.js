@@ -25,10 +25,17 @@ testWebP(function (support) {
 //slider-swiper
 const swiper = new Swiper('.swiper', {
 	speed: 400,
-
-	slidesPerView: 6,
 	spaceBetween: 20,
 	loop: true,
+	breakpoints: {
+		// when window width is >= 320px
+		320: {
+			slidesPerView: 1,
+		},
+		640: {
+			slidesPerView: 4,
+		}
+		},
 });
 
 

@@ -52,6 +52,7 @@
 		margin-top: 16px;
 		font-size: 14px;
 		line-height: 22px;
+		padding: 0 30px;
 	}
 	&__about-discription-link{
 		position: relative;
@@ -103,5 +104,26 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
+	}
+}
+
+@media(max-width: 640px){
+	.promo{
+		padding-bottom: 50px;
+		&__flex-item {
+			flex: 0 1 100%;
+		}
+		&__flex-item.for-screen-and-tablet {
+			display: none
+		}
+		&__slider-wrapper{
+			padding-left: 30px;
+		}
+		&__slider-swiper{
+			width: auto;
+		}
+	}
+	.swiper-slide{
+		//width: 375px!important;
 	}
 }
