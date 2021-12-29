@@ -1132,6 +1132,10 @@ html {
   font-weight: inherit;
 }
 
+.menu-mobile {
+  display: none;
+}
+
 .card-type-1__flex-wrapper {
   width: 455px;
   display: -webkit-box;
@@ -1149,6 +1153,7 @@ html {
 
 .card-type-1__img-wrapper {
   height: 100%;
+  max-height: 589px;
 }
 
 .card-type-1__img-wrapper img {
@@ -1964,6 +1969,13 @@ html {
 
 @media (max-width: 992px) {
   .menu {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     z-index: 1;
     position: fixed;
     -webkit-box-orient: vertical;
@@ -1987,7 +1999,7 @@ html {
     height: 100%;
   }
 
-  .menu__links-wrapper {
+  .menu-mobile__links-wrapper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -1997,25 +2009,25 @@ html {
     row-gap: 50px;
   }
 
-  .menu__links-wrapper:last-of-type {
+  .menu-mobile__links-wrapper:last-of-type {
     margin-top: 50px;
   }
 
-  .menu__link-wrapper {
+  .menu-mobile__link-wrapper {
     margin-right: 0;
   }
 
-  .menu__link-wrapper.divider {
+  .menu-mobile__link-wrapper.divider {
     width: 140px;
     height: 2px;
     margin: 0 auto;
   }
 
-  .menu__menu__link {
+  .menu-mobile__menu__link {
     padding: 10px 0;
   }
 
-  .menu.active {
+  .menu-mobile.active {
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
             transform: translateY(0);
@@ -2135,8 +2147,8 @@ html {
 
   .collection__discription {
     text-align: center;
-    margin-top: 35px;
-    margin-bottom: 60px;
+    margin: 35px auto 60px auto;
+    padding-right: 0;
   }
 
   .collection__text {

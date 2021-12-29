@@ -52,7 +52,7 @@ function activeClassesForNavMenu() {
 	const menuLinks = document.querySelectorAll('.menu__link');
 	const currentLocation = document.location.pathname.split('/');
 	const pathName = currentLocation[currentLocation.length - 2];
-	
+	console.log(currentLocation)
 	menuLinks.forEach(e => e.closest('.menu__link-wrapper').classList.remove('active'));
 
 	menuLinks.forEach(e => {

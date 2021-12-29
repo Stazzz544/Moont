@@ -10,7 +10,50 @@
 		<span class="burger__line bottom"></span>
 	</div>
 
-	<nav class='menu' id='mainMenu'>
+	<!-- Дублирование элементов меню пришлось сделать по требованию заказчика, иначи при переходе на мобилку во время стягивания браузера был виден рывок во время изменения стилей привязанных к вьюпорту -->
+	<!-- мобильное меню -->
+	<nav class='menu-mobile' id='mainMenu'>
+		<ul class="menu__links-wrapper menu-mobile__links-wrapper">
+			<li class="menu__link-wrapper menu-mobile__link-wrapper active">
+				<a href="/" class="menu__link">
+					<span class="menu__link-text">home</span>
+				</a>
+			</li>
+			<li class="menu__link-wrapper menu-mobile__link-wrapper">
+				<a href="/ru/collections/1" class="menu__link">
+					<span class="menu__link-text">коллекции</span>
+				</a>
+			</li>
+			<li class="menu__link-wrapper menu-mobile__link-wrapper">
+				<a href="#" class="menu__link">
+					<span class="menu__link-text">на продажу</span>
+				</a>
+			</li>
+			<li class="menu__link-wrapper menu-mobile__link-wrapper">
+				<a href="/ru/about" class="menu__link">
+					<span class="menu__link-text">о бренде</span>
+				</a>
+			</li>
+			<li class="menu__link-wrapper menu-mobile__link-wrapper">
+				<a href="/ru/contacts" class="menu__link">
+					<span class="menu__link-text">контакты</span>
+				</a>
+			</li>
+		</ul>
+
+		<ul class="menu__links-wrapper menu-mobile__links-wrapper">
+			<li class="menu__link-wrapper divider  menu-mobile__link-wrapper">
+			</li>
+			<li class="menu__link-wrapper menu-mobile__link-wrapper change-language">
+				<a href="/en" class="menu__link">
+					<span class="menu__link-text">en</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- десктопное меню -->
+	<nav class='menu' >
 		<ul class="menu__links-wrapper">
 			<li class="menu__link-wrapper active">
 				<a href="/" class="menu__link">
@@ -43,12 +86,11 @@
 			<li class="menu__link-wrapper divider">
 			</li>
 			<li class="menu__link-wrapper change-language">
-				<a href="#" class="menu__link">
+				<a href="/en" class="menu__link">
 					<span class="menu__link-text">en</span>
 				</a>
 			</li>
 		</ul>
-
 	</nav>
 
 </header>

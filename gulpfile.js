@@ -127,7 +127,7 @@ function images() {
 	return src(path.src.img)//получаем исходник
 		.pipe(
 			webp({
-				quality: 90//качество сконвертированной картинки
+				quality: 100//качество сконвертированной картинки
 			})
 		)
 		.pipe(dest(path.build.img))//выводим

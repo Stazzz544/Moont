@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<!-----------------head------------------------>
+		@@include('common-html-components/head.html')
+
+<body>
+	<div class="main-wrapper">
+
+<!-----------------header------------------------>
+		@@include('en/html-components/header.html')
+
+<!-----------------home page promo------------------------>
+
+		<main class="promo fullscreen">
+
+			<div class="promo__flex-wrapper">
+				<div class="promo__flex-item for-huge-screen">
+					<img class="promo__img" src="/img/home_page/1.jpg" alt="promo-img">
+				</div>
+				<div class="promo__flex-item for-screen-and-tablet">
+					<img class="promo__img" src="/img/home_page/2.jpg" alt="promo-img">
+				</div>
+				<div class="promo__flex-item">
+					<img class="promo__img" src="/img/home_page/3.jpg" alt="promo-img">
+				</div>
+				<div class="promo__flex-item for-huge-screen">
+					<img class="promo__img" src="/img/home_page/4.jpg" alt="promo-img">
+				</div>
+				<div class="promo__flex-item for-screen-and-tablet">
+					<img class="promo__img for-huge-screen" src="/img/home_page/5.jpg" alt="promo-img">
+				</div>
+				<div class="promo__center-logo-wrapper">
+					<img class="promo__center-logo-img" src="/img/home_page/logo/center_logo.svg" alt="logo">
+				</div>
+			</div>
+
+			<div class="promo__about-wrapper">
+				<h1 class="promo__about-title">moont</h1>
+				<p class="promo__about-discription">
+					Одежда с ручной вышивкой, вдохновленная удивительной красотой природы. Свежий, как первый снег, бренд MOONT из Санкт-Петербурга предлагает готовую уникальную одежду.
+					<br/>
+					<a class="promo__about-discription-link" href="#">Пишите</a> по вопросам сотрудничества и покупки изделий.
+				</p>
+			</div>
+
+			<div class="promo__slider-wrapper">
+				
+				<div class="promo__slider-swiper swiper">
+
+					<ul class="promo__change-collection">
+						<li class="promo__change 2021">КОЛЛЕКЦИЯ ОСЕНЬ-ЗИМА 2021</li>
+					</ul>
+					
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide">
+							@@include('ru/collections/1/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/2/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/3/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/4/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/5/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/6/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/7/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/8/mini_card_of_product.html')
+						</div>
+
+						<div class="swiper-slide">
+							@@include('ru/collections/9/mini_card_of_product.html')
+						</div>
+						<div class="swiper-slide">
+							@@include('ru/collections/10/mini_card_of_product.html')
+						</div>
+						<div class="swiper-slide">
+							@@include('ru/collections/11/mini_card_of_product.html')
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+<!-----------------footer------------------------>
+		@@include('en/html-components/footer.html')
+		
+	</div>
+
+<!-----------------script------------------------>
+		@@include('common-html-components/script.html')
+
+</body>
+
+</html> 
