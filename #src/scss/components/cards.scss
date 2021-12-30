@@ -1,4 +1,4 @@
-.card-type-1 {
+.card-type-1, .card-type-2{
 	&__flex-wrapper{
 		width: 455px;
 		//height: 700px;
@@ -47,6 +47,16 @@
 	}
 }
 
+
+.card-type-2{
+	&__flex-wrapper{
+		width: 360px;
+		//height: 700px;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
 @media(max-width: 640px){
 	.card-type-1{
 		&__flex-wrapper {
@@ -55,11 +65,10 @@
 		
 		
 	}
-		
 }
 
+//html Preset card-type-1
 
-//html Preset
 // <div class="card-type-1">
 // 	<div class="card-type-1__flex-wrapper">
 // 		<div class="card-type-1__img-wrapper">
@@ -71,6 +80,26 @@
 // 			</p>
 // 			<div class="card-type-1__btn-wrapper">
 // 				<button class="card-type-1__discription-button btn__type-1 btn__type-1">buy</button>
+// 			</div>
+// 		</div>
+// 	</div>
+// </div>
+
+//==================================================================
+
+//html Preset card-type-2
+
+// <div class="card-type-2">
+// 	<div class="card-type-2__flex-wrapper">
+// 		<div class="card-type-2__img-wrapper">
+// 			<img src="img/test/2.jpg" alt="goods">
+// 		</div>
+// 		<div class="card-type-2__discription-wrapper">
+// 			<h3 class="card-type-2__discription-title">hoody, one size M</h3>
+// 			<p class="card-type-2__discription-text">Embroidery, satin, cashemir
+// 			</p>
+// 			<div class="card-type-2__btn-wrapper">
+// 				<button class="card-type-2__discription-button btn__type-1 btn__type-1">buy</button>
 // 			</div>
 // 		</div>
 // 	</div>
