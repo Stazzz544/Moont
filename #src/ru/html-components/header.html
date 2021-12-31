@@ -10,7 +10,7 @@
 		<span class="burger__line bottom"></span>
 	</div>
 
-	<!-- Дублирование элементов меню пришлось сделать по требованию заказчика, иначи при переходе на мобилку во время стягивания браузера был виден рывок во время изменения стилей привязанных к вьюпорту -->
+	<!-- Дублирование элементов меню пришлось сделать по требованию заказчика, иначе при переходе на мобилку во время стягивания браузера был виден рывок во время изменения стилей привязанных к вьюпорту -->
 	<!-- мобильное меню -->
 	<nav class='menu-mobile' id='mainMenu'>
 		<ul class="menu__links-wrapper menu-mobile__links-wrapper">
@@ -19,13 +19,16 @@
 					<span class="menu__link-text">home</span>
 				</a>
 			</li>
-			<li class="menu__link-wrapper menu-mobile__link-wrapper">
-				<a href="/ru/collections/1" class="menu__link">
+			<li class="menu__link-wrapper menu-mobile__link-wrapper dropdown-wrapper">
+				<a href="/ru/collections" class="menu__link">
 					<span class="menu__link-text">коллекции</span>
 				</a>
+
+				<ul class="menu__collection-dropdown"></ul>
+
 			</li>
 			<li class="menu__link-wrapper menu-mobile__link-wrapper">
-				<a href="#" class="menu__link">
+				<a href="/ru/for-sale" class="menu__link">
 					<span class="menu__link-text">на продажу</span>
 				</a>
 			</li>
@@ -60,13 +63,16 @@
 					<span class="menu__link-text">home</span>
 				</a>
 			</li>
-			<li class="menu__link-wrapper">
-				<a href="/ru/collections/1" class="menu__link">
+			<li class="menu__link-wrapper menu-mobile__link-wrapper dropdown-wrapper">
+				<a href="/ru/collections" class="menu__link">
 					<span class="menu__link-text">коллекции</span>
 				</a>
+
+				<ul class="menu__collection-dropdown"></ul>
+				
 			</li>
 			<li class="menu__link-wrapper">
-				<a href="#" class="menu__link">
+				<a href="/ru/for-sale" class="menu__link">
 					<span class="menu__link-text">на продажу</span>
 				</a>
 			</li>

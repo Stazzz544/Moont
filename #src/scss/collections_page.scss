@@ -1,6 +1,6 @@
 .collection-galery{
 	&__container{
-		padding: 50px 68px 0 68px;
+		padding: 50px 68px 64px 68px;
 		margin: 0 auto;
 		display: grid;
 		row-gap: 107px;
@@ -23,3 +23,18 @@
 .collection-galery>.collection-galery__title:first-of-type{
 	margin-top: 0;
 }
+
+@media(max-width: 530px){
+	.collection-galery{
+		&__container{
+			padding: 50px 0px 64px 0px;
+		}
+		&__grid{
+			grid-template-columns: 1fr;
+		}
+		&__title{
+			margin-left: 30px;
+		}
+	}
+}
+

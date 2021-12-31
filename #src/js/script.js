@@ -33,6 +33,8 @@ function activeClassesForNavMenu() {
 	const menuLinks = document.querySelectorAll('.menu__link');
 	const currentLocation = document.location.pathname.split('/');
 	const pathName = currentLocation[currentLocation.length - 2];
+	console.log(pathName)
+
 	menuLinks.forEach(e => e.closest('.menu__link-wrapper').classList.remove('active'));
 
 	menuLinks.forEach(e => {
@@ -40,6 +42,11 @@ function activeClassesForNavMenu() {
 		const locationName = linkLocation[linkLocation.length - 1];
 	
 		if (locationName === pathName) e.closest('.menu__link-wrapper').classList.add('active');
+		else if(currentLocation.find(e => e === 'collections')){
+			console.log((currentLocation.find(e => e === 'collections')))
+			document.querySelectorAll('.dropdown-wrapper').forEach(e => e.classList.add('active'));
+			return false;
+		}
 	});
 };
 
@@ -69,10 +76,12 @@ function burger() {
 const currentLocation = document.location.pathname;
 const arrCurrentLocation = currentLocation.split('/');
 let numPage;//номер страницы  - это номер товара и его id, также это номер папки где лежит index.html товара в родилеьской папке collections
+console.log()
 
 if(arrCurrentLocation[arrCurrentLocation.length - 3] === 'collections') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
+else if(typeof(+arrCurrentLocation[arrCurrentLocation.length - 4]) == 'number') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
 
-console.log(currentLocation)
+console.log(numPage)
 
 switch (currentLocation) {
 	case '/'://страница home   ru
@@ -84,47 +93,81 @@ switch (currentLocation) {
 	case `/ru/collections/`:
 		renderRusPageOfCollections(goods);
 		break;
+	case `/ru/collections/year/${numPage}/`:
+		renderRusPageOfCollections(goods, false , numPage);
+		break;
+	case `/ru/for-sale/`:
+		renderRusPageOfCollections(goods, true);
+		break;
 }
 
-function renderRusPageOfCollections(goodsObj) {
-	const collectionGaleryContainer = document.querySelector('.collection-galery__container');
+//функция получает уникальные года коллекций из главного объекта, возвращает массив
+function arrYearsOfCollections(goodsObj){
 	const yearsOfCollectionsSet = new Set();
-	
 	goodsObj.forEach(e => yearsOfCollectionsSet.add(e.collection));
-	const yearsOfCollectionsArr = Array.from(yearsOfCollectionsSet).reverse();
+	return Array.from(yearsOfCollectionsSet).sort((a,b)=>b-a);
+};
 
-	yearsOfCollectionsArr.forEach(year => collectionGaleryContainer.innerHTML += htmlTemplateYearOfCollection(year));
+dropdownRender(goods);
 
-	const collection2021 = collectionGaleryContainer.querySelector('.collection-galery__2021');
-	const collection2022 = collectionGaleryContainer.querySelector('.collection-galery__2022');
-	
-	goodsObj.forEach(product => {
-		switch (product.collection) {
-			case 2021:
-				collection2021.innerHTML += htmlProductTemplate(product);
-			break;
-			case 2022:
-				collection2022.innerHTML += htmlProductTemplate(product);
-			break;
+function dropdownRender(goodsObj) {
+	const yearsOfCollectionsArr = arrYearsOfCollections(goodsObj);
+
+	const menu = document.querySelectorAll('.menu__collection-dropdown');
+
+	menu.forEach(menuDropWrapper => {
+		yearsOfCollectionsArr.forEach(year => { menuDropWrapper.innerHTML += `
+			<li class="menu__collection-dropdown-item">
+				<a href="/ru/collections/year/${year}" class="menu__link">
+					<span class="menu__link-text">коллекция ${year}</span>
+				</a>
+			</li>
+			`;
+		});
+	});
+};
+
+//функция отрисовывает страницу с коллекциями и годами.
+function renderRusPageOfCollections(goodsObj, forSale=false, year = false) {
+
+	if (forSale) { //фильтр по наличию товара для страницы "На продажу"
+		goodsObj = goodsObj.filter(e => e.sale == true);
+
+	} else if (year) { //фильтр по годам для дропдауна страницы "Коллекции"
+		goodsObj = goodsObj.filter(e => e.collection == year);
 	}
-})
+
+	const collectionGaleryContainer = document.querySelector('.collection-galery__container');
+
+	const yearsOfCollectionsArr = arrYearsOfCollections(goodsObj);
+
+	yearsOfCollectionsArr.forEach(year => collectionGaleryContainer
+		.innerHTML += htmlTemplateYearOfCollection(year));
+	
+	//проверяем год в карточке и отправляем её в блок коллекции 2021, 2022 и т.д.
+	goodsObj.forEach(product => {
+		document.querySelector(`.collection-galery__${product.collection}`)
+		.innerHTML += htmlProductTemplate(product)
+	});
 
 	function htmlTemplateYearOfCollection(year){
 		return`
 			<div class="collection-galery-wrapper">
-				<h2 class="collection-galery__title">Коллекция ${year}</h2>
+				<div class="collection-galery__grid">
+					<h2 class="collection-galery__title">Коллекция ${year}</h2>
+				</div>
 				<div class="collection-galery__grid collection-galery__${year}"></div>
 			</div>
 		`
-	}
+	};
 
 	function htmlProductTemplate(product){
 		return`
 			<div class="card-type-2 card-type-2__grid-item">
 				<div class="card-type-2__flex-wrapper">
-					<div class="card-type-2__img-wrapper">
+					<a href=${product.urlToFullInformation} class="card-type-2__img-wrapper">
 						<img src=${product.sliderImg} alt=${product.previewDiscription}>
-					</div>
+					</a>
 					<div class="card-type-2__discription-wrapper">
 						<h3 class="card-type-2__discription-title">${product.title}</h3>
 						<p class="card-type-2__discription-text">${product.previewDiscription}</p>
@@ -132,11 +175,12 @@ function renderRusPageOfCollections(goodsObj) {
 						<button ${product.sale ? '' : 'disabled'} class="card-type-1__discription-button btn__type-1 btn__type-1">${product.sale ? 'узнать цену':'нет в продаже'}</button>
 					</div>
 				</div>
-		</div>
-	`;}
+			</div>
+		`
+	;}
 };
 
-
+//функция добавляет карточки в слайдер
 function renderRusCardsForSlider(goodsObj) {
 	const swiperContainer = document.querySelector('#swiper-out');
 
@@ -166,6 +210,7 @@ function renderRusCardsForSlider(goodsObj) {
 	});
 };
 
+//функция рисует содержиме страницы с полным отображением одного товара и галереей изобраджений
 function renderRusPageOfProduct(goodsObj, numPage) {
 	const collectionWrapper = document.querySelector('.collection__wrapper');
 	const gridContainer = document.createElement('div');
@@ -230,7 +275,3 @@ const swiper = new Swiper('.swiper', {
 	// 	delay: 1500,
 	//  },
 });
-
-
-//img/collections/1/preview-img/1.jpg
-//img/collections/1/preview-img/1.jpg

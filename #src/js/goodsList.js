@@ -204,7 +204,7 @@ const goods = [
 		sliderImg: '/img/collections/11/preview-img/1.jpg',
 		altText:'нет в продаже',
 		urlToFullInformation: "/ru/collections/11/",
-		collection: 2022,
+		collection: 2021,
 		gridStyleTamplate: 'product_11',
 		galeryImages: [
 			{link: '/img/collections/11/1.jpg', altText: 'product photo'},
