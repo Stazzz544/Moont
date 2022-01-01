@@ -1,0 +1,17 @@
+
+.social {
+	&__link {
+	}
+	&__img {
+		fill: #000000;
+		width: 24px;
+		height: 24px;
+		transition: all 0.3s;
+	}
+	&__img:hover {
+		fill: #08538A;
+	}
+	&__link-text{
+		display: none;
+	}
+}

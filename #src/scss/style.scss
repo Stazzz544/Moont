@@ -1,3 +1,4 @@
+//standart
 @import 'standart/reset';
 @import 'standart/mixins';
 @import 'standart/variables';
@@ -16,19 +17,15 @@
 @import 'components/header';
 @import 'components/footer';
 @import 'components/burger';
-
-
+@import 'components/social.scss';
 
 //pages
 @import 'home_page';
 @import 'about_page';
 @import 'product_page';
 @import 'collections_page';
+@import 'contacts_page';
 
-
-
-
-//common blocks
 
 
 

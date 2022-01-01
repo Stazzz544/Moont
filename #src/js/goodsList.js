@@ -9,7 +9,7 @@ const goods = [
 		altText:'пончо',
 		urlToFullInformation: "/ru/collections/1/",
 		collection: 2021,
-		gridStyleTamplate: 'product_1',
+		gridStyleTamplate: 'template-galery_1',
 		galeryImages: [
 			{link: '/img/collections/1/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/1/2.jpg', altText: 'product photo'},
@@ -29,7 +29,7 @@ const goods = [
 		altText:'юбка',
 		urlToFullInformation: "/ru/collections/2/",
 		collection: 2021,
-		gridStyleTamplate: 'product_2',
+		gridStyleTamplate: 'template-galery_2',
 		galeryImages: [
 			{link: '/img/collections/2/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/2/2.jpg', altText: 'product photo'},
@@ -51,7 +51,7 @@ const goods = [
 		altText:'худи',
 		urlToFullInformation: "/ru/collections/3/",
 		collection: 2021,
-		gridStyleTamplate: 'product_3',
+		gridStyleTamplate: 'template-galery_3',
 		galeryImages: [
 			{link: '/img/collections/3/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/3/2.jpg', altText: 'product photo'},
@@ -70,7 +70,7 @@ const goods = [
 		altText:'футболка',
 		urlToFullInformation: "/ru/collections/4/",
 		collection: 2021,
-		gridStyleTamplate: 'product_4',
+		gridStyleTamplate: 'template-galery_4',
 		galeryImages: [
 			{link: '/img/collections/4/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/4/2.jpg', altText: 'product photo'},
@@ -90,7 +90,7 @@ const goods = [
 		altText:'худи',
 		urlToFullInformation: "/ru/collections/5/",
 		collection: 2021,
-		gridStyleTamplate: 'product_5',
+		gridStyleTamplate: 'template-galery_5',
 		galeryImages: [
 			{link: '/img/collections/5/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/5/2.jpg', altText: 'product photo'},
@@ -110,7 +110,7 @@ const goods = [
 		altText:'худи',
 		urlToFullInformation: "/ru/collections/6/",
 		collection: 2021,
-		gridStyleTamplate: 'product_6',
+		gridStyleTamplate: 'template-galery_6',
 		galeryImages: [
 			{link: '/img/collections/6/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/6/2.jpg', altText: 'product photo'},
@@ -130,7 +130,7 @@ const goods = [
 		altText:'футболка',
 		urlToFullInformation: "/ru/collections/7/",
 		collection: 2021,
-		gridStyleTamplate: 'product_7',
+		gridStyleTamplate: 'template-galery_7',
 		galeryImages: [
 			{link: '/img/collections/7/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/7/2.jpg', altText: 'product photo'},
@@ -150,7 +150,7 @@ const goods = [
 		altText:'футболка',
 		urlToFullInformation: "/ru/collections/8/",
 		collection: 2021,
-		gridStyleTamplate: 'product_8',
+		gridStyleTamplate: 'template-galery_8',
 		galeryImages: [
 			{link: '/img/collections/8/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/8/2.jpg', altText: 'product photo'},
@@ -169,7 +169,7 @@ const goods = [
 		altText:'футболка',
 		urlToFullInformation: "/ru/collections/9/",
 		collection: 2021,
-		gridStyleTamplate: 'product_9',
+		gridStyleTamplate: 'template-galery_9',
 		galeryImages: [
 			{link: '/img/collections/9/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/9/2.jpg', altText: 'product photo'},
@@ -187,7 +187,7 @@ const goods = [
 		altText:'бомбер',
 		urlToFullInformation: "/ru/collections/10/",
 		collection: 2021,
-		gridStyleTamplate: 'product_10',
+		gridStyleTamplate: 'template-galery_10',
 		galeryImages: [
 			{link: '/img/collections/10/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/10/2.jpg', altText: 'product photo'},
@@ -205,7 +205,7 @@ const goods = [
 		altText:'нет в продаже',
 		urlToFullInformation: "/ru/collections/11/",
 		collection: 2021,
-		gridStyleTamplate: 'product_11',
+		gridStyleTamplate: 'template-galery_11',
 		galeryImages: [
 			{link: '/img/collections/11/1.jpg', altText: 'product photo'},
 			{link: '/img/collections/11/2.jpg', altText: 'product photo'},

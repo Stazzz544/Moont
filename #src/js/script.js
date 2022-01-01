@@ -1,30 +1,24 @@
 @@include('lib/swiper-bundle.min.js');
+@@include('htmlGenerators.js')
 @@include('goodsList.js'); // весь список товара (аналог json, только в js объекте)
 
 
 //===================================================
 //функция для подключения webp
 function testWebP(callback) {
-
 	var webP = new Image();
-	webP.onload = webP.onerror = function () {
-		callback(webP.height == 2);
-	};
+	webP.onload = webP.onerror = function () {callback(webP.height == 2)};
 	webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
 }
 
 testWebP(function (support) {
-
-	if (support == true) {
-		document.querySelector('body').classList.add('webp');
-	} else {
-		document.querySelector('body').classList.add('no-webp');
-	}
+	if (support == true) document.querySelector('body').classList.add('webp');
+	else document.querySelector('body').classList.add('no-webp');
 });
 
 
 //===================================================
-//function to add or remove class active to menu item
+//Функция удаления и добавления класса активности в меню навигации
 
 
 activeClassesForNavMenu()
@@ -33,7 +27,6 @@ function activeClassesForNavMenu() {
 	const menuLinks = document.querySelectorAll('.menu__link');
 	const currentLocation = document.location.pathname.split('/');
 	const pathName = currentLocation[currentLocation.length - 2];
-	console.log(pathName)
 
 	menuLinks.forEach(e => e.closest('.menu__link-wrapper').classList.remove('active'));
 
@@ -43,7 +36,6 @@ function activeClassesForNavMenu() {
 	
 		if (locationName === pathName) e.closest('.menu__link-wrapper').classList.add('active');
 		else if(currentLocation.find(e => e === 'collections')){
-			console.log((currentLocation.find(e => e === 'collections')))
 			document.querySelectorAll('.dropdown-wrapper').forEach(e => e.classList.add('active'));
 			return false;
 		}
@@ -51,7 +43,6 @@ function activeClassesForNavMenu() {
 };
 
 //===================================================
-//burger
 
 burger();
 
@@ -60,13 +51,10 @@ function burger() {
 	const body = document.querySelector('body');
 
 	burger.addEventListener('click', () => {
-		
-
-		if (!body.classList.contains('lock')) body.classList.add('lock')
+		if (!body.classList.contains('lock')) body.classList.add('lock');
 		else body.classList.remove('lock');
 		document.querySelector('#mainMenu').classList.toggle('active');
 		burger.classList.toggle('active');
-		
 	});
 };
 
@@ -76,12 +64,20 @@ function burger() {
 const currentLocation = document.location.pathname;
 const arrCurrentLocation = currentLocation.split('/');
 let numPage;//номер страницы  - это номер товара и его id, также это номер папки где лежит index.html товара в родилеьской папке collections
-console.log()
 
 if(arrCurrentLocation[arrCurrentLocation.length - 3] === 'collections') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
 else if(typeof(+arrCurrentLocation[arrCurrentLocation.length - 4]) == 'number') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
 
+
+console.log('currentLocation', currentLocation)
 console.log(numPage)
+
+const enLang = currentLanguageOfPage(arrCurrentLocation);
+
+function currentLanguageOfPage(arrCurrentLocation){
+	if (arrCurrentLocation[1] == 'en') return true;
+	else false;
+}
 
 switch (currentLocation) {
 	case '/'://страница home   ru
@@ -94,7 +90,7 @@ switch (currentLocation) {
 		renderRusPageOfCollections(goods);
 		break;
 	case `/ru/collections/year/${numPage}/`:
-		renderRusPageOfCollections(goods, false , numPage);
+		renderRusPageOfCollections(goods, false, numPage);
 		break;
 	case `/ru/for-sale/`:
 		renderRusPageOfCollections(goods, true);
@@ -116,13 +112,7 @@ function dropdownRender(goodsObj) {
 	const menu = document.querySelectorAll('.menu__collection-dropdown');
 
 	menu.forEach(menuDropWrapper => {
-		yearsOfCollectionsArr.forEach(year => { menuDropWrapper.innerHTML += `
-			<li class="menu__collection-dropdown-item">
-				<a href="/ru/collections/year/${year}" class="menu__link">
-					<span class="menu__link-text">коллекция ${year}</span>
-				</a>
-			</li>
-			`;
+		yearsOfCollectionsArr.forEach(year => { menuDropWrapper.innerHTML += htmlGeneratordropDownMenu (year);
 		});
 	});
 };
@@ -142,70 +132,27 @@ function renderRusPageOfCollections(goodsObj, forSale=false, year = false) {
 	const yearsOfCollectionsArr = arrYearsOfCollections(goodsObj);
 
 	yearsOfCollectionsArr.forEach(year => collectionGaleryContainer
-		.innerHTML += htmlTemplateYearOfCollection(year));
+		.innerHTML += htmlGeneratorYearOfCollection(year));
 	
 	//проверяем год в карточке и отправляем её в блок коллекции 2021, 2022 и т.д.
 	goodsObj.forEach(product => {
 		document.querySelector(`.collection-galery__${product.collection}`)
-		.innerHTML += htmlProductTemplate(product)
+		.innerHTML += htmlGeneratorProductTemplate(product)
 	});
 
-	function htmlTemplateYearOfCollection(year){
-		return`
-			<div class="collection-galery-wrapper">
-				<div class="collection-galery__grid">
-					<h2 class="collection-galery__title">Коллекция ${year}</h2>
-				</div>
-				<div class="collection-galery__grid collection-galery__${year}"></div>
-			</div>
-		`
-	};
 
-	function htmlProductTemplate(product){
-		return`
-			<div class="card-type-2 card-type-2__grid-item">
-				<div class="card-type-2__flex-wrapper">
-					<a href=${product.urlToFullInformation} class="card-type-2__img-wrapper">
-						<img src=${product.sliderImg} alt=${product.previewDiscription}>
-					</a>
-					<div class="card-type-2__discription-wrapper">
-						<h3 class="card-type-2__discription-title">${product.title}</h3>
-						<p class="card-type-2__discription-text">${product.previewDiscription}</p>
-						<div class="card-type-1__btn-wrapper">
-						<button ${product.sale ? '' : 'disabled'} class="card-type-1__discription-button btn__type-1 btn__type-1">${product.sale ? 'узнать цену':'нет в продаже'}</button>
-					</div>
-				</div>
-			</div>
-		`
-	;}
 };
 
 //функция добавляет карточки в слайдер
 function renderRusCardsForSlider(goodsObj) {
 	const swiperContainer = document.querySelector('#swiper-out');
 
-	goodsObj.forEach(e => {
+	goodsObj.forEach(product => {
 		const swiperSlide = document.createElement('div');
 		swiperSlide.classList.add('swiper-slide');
 
-		swiperSlide.innerHTML = `
-			<div class="card-type-1">
-				<div class="card-type-1__flex-wrapper">
-					<a href=${e.urlToFullInformation}>
-						<div class="card-type-1__img-wrapper">
-							<img src=${e.sliderImg} alt=${e.altText}>
-						</div>
-					</a>
-					<div class="card-type-1__discription-wrapper">
-						<h3 class="card-type-1__discription-title">${e.title}</h3>
-						<p class="card-type-1__discription-text">${e.previewDiscription}</p>
-						<div class="card-type-1__btn-wrapper">
-							<button ${e.sale ? '' : 'disabled'} class="card-type-1__discription-button btn__type-1 btn__type-1">${e.sale ? 'узнать цену':'нет в продаже'}</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		`;
+		htmlGeneratorSliderTemlate(swiperSlide, product)
+
 		swiperContainer.append(swiperSlide);
 	});
 };
@@ -213,46 +160,27 @@ function renderRusCardsForSlider(goodsObj) {
 //функция рисует содержиме страницы с полным отображением одного товара и галереей изобраджений
 function renderRusPageOfProduct(goodsObj, numPage) {
 	const collectionWrapper = document.querySelector('.collection__wrapper');
+
 	const gridContainer = document.createElement('div');
 	const collectionDiscription = document.createElement('div');
-	const collectionGridMobil = document.createElement('div');
+	const collectionGridMobile = document.createElement('div');
 	
 	gridContainer.classList.add('collection__grid', 'product_' + numPage);
 	collectionDiscription.classList.add('collection__discription');
-	collectionGridMobil.classList.add('collection__grid', 'mobile');
+	collectionGridMobile.classList.add('collection__grid', 'mobile');
 
-	goodsObj.forEach((good, index) => {
-		if(good.id == numPage) {
-			good.galeryImages.forEach((img, index) => {
-				gridContainer.innerHTML += `
-				<div class="collection__grid-item ${good.gridStyleTamplate} img-${index+1}">
-					<img class="collection__grid-img" src=${img.link} alt=${img.altText}>
-				</div>
-				`;
-			});
-
-			collectionDiscription.innerHTML += `
-				<div class="collection__discription">
-					<h1 class="collection__title">${good.title}</h1>
-					<div class="collection__text">${good.discription}</div>
-					<button ${good.sale ? '' : 'disabled'} class=" btn1 btn__type-1 collection__btn">${good.sale ? 'узнать цену':'нет в продаже'}</button>
-				</div>
-			`;
-
-			collectionGridMobil.innerHTML += `
-				<div class="collection__grid ${good.gridStyleTamplate} mobile ">
-					<div class="collection__grid-item mobile ${good.gridStyleTamplate} img-${index+1}">
-						<img class="collection__grid-img" src="/img/collections/${numPage}/1.jpg" alt=${good.title}>
-					</div>
-				</div>
-			`;
-			collectionGridMobil.classList.add(`${good.gridStyleTamplate}`);
+	goodsObj.forEach((product, index) => {
+		if(product.id == numPage) {
+			product.galeryImages.forEach((img, index) => gridContainer.innerHTML += htmlGeneratorGridContainer(product, index, img));
+			collectionDiscription.innerHTML += htmlGeneratorCollectionDiscription(product);
+			collectionGridMobile.innerHTML += htmlGeneratorcollectionGridMobil(product, index, numPage);
+			collectionGridMobile.classList.add(`${product.gridStyleTamplate}`);
 		};
 	});
 
 	collectionWrapper.append(gridContainer);
 	collectionWrapper.append(collectionDiscription);
-	collectionWrapper.append(collectionGridMobil);
+	collectionWrapper.append(collectionGridMobile);
 }
 
 

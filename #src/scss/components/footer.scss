@@ -22,15 +22,11 @@
 	&__flex-group-wrapper:first-child {
 		margin-left: 4px;
 	}
-	&__flex-item {
-	}
 	&__flex-item.mobile{
 		display: none;
 	}
 	&__flex-item.email-text {
 		margin-left: 15px;
-	}
-	&__flex-item-img {
 	}
 	&__flex-item-text {
 		font-size: 22px;
