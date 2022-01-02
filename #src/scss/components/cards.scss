@@ -10,7 +10,7 @@
 	}
 	&__img-wrapper{
 		height: 100%;
-		max-height: 589px;
+		//max-height: 589px;
 	}
 	&__img-wrapper img{
 		height: 100%;
@@ -40,7 +40,9 @@
 		letter-spacing: 0.1em;
 	}
 	&__discription-button {
+		display: inline-block;
 		margin-top: 9px;
+		
 	}
 	&__btn-wrapper{
 		text-align: center;

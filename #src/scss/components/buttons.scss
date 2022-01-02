@@ -10,6 +10,9 @@
 		border-radius: 20px;
 		letter-spacing: 0.1em;
 		line-height: 20px;
+		color: #000000;
+		max-height: 26px;
+		white-space: nowrap;
 	}
 	&__type-1:hover, &__buy:active{
 		background-color: #000000;
@@ -19,16 +22,6 @@
 		background-color: #000000;
 		outline: 3px solid #82A9BA;
 		color: #ffffff;
-	}
-	&__type-1:disabled{
-		padding: 2px 0px;
-		border:transparent;
-		color: rgb(194, 194, 194);
-	}
-	&__type-1:disabled:hover{
-		border:transparent;
-		background-color:transparent;
-		color: rgb(194, 194, 194);
 	}
 }
 
@@ -40,6 +33,17 @@
 	padding: 2px 22px;
 }
 
+.disabled{
+	padding: 2px 0px;
+	border:transparent;
+	color: rgb(194, 194, 194);
+}
+
+.disabled:hover{
+	border:transparent;
+	background-color:transparent;
+	color: rgb(194, 194, 194);
+}
 
 //html Preset
 //Обязательно обернуть в div, иначе кнопку растянет на всю ширину

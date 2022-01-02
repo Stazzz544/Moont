@@ -6,42 +6,24 @@
 				<img class="footer__flex-item-img" src="/img/footer/icons/mail.svg" alt="email">
 			</div>
 			<div class="footer__flex-item email-text">
-				<a href='#' class="footer__flex-item-text">email to buy</a>
+				<a href='mailto:fashion@moont.ru' class="footer__flex-item-text">email</a>
 			</div>
 		</div>
+
 		<div class="footer__flex-group-wrapper pc">
-			<a href="#" target="_blank" class="footer__img-wrapper">
-				<img class="footer__flex-item-img" src="/img/footer/icons/instagram.svg" alt="instagram">
-			</a>
-			<a href="#" target="_blank" class="footer__img-wrapper">
-				<img class="footer__flex-item-img" src="/img/footer/icons/telegram.svg" alt="telegram">
-			</a>
-			<a href="#" target="_blank" class="footer__img-wrapper">
-				<img class="footer__flex-item-img" src="/img/footer/icons/pinterest.svg" alt="pinterest">
-			</a>
-			<a href="#" target="_blank" class="footer__img-wrapper">
-				<img class="footer__flex-item-img" src="/img/footer/icons/facebook.svg" alt="facebook">
-			</a>
+			@@include('common-html-components/socials.html')
 		</div>
+
 		<div class="footer__flex-item email-text mobile">
 			<a href="/en" class="footer__flex-item-text">to home</a>
 		</div>
 	</div>
-	<p class="footer__location">St Petersburg Russia</p>
+	<p class="footer__location">St Petersburg, Russia</p>
+
 	<div class="footer__flex-group-wrapper mobile">
-		<a href="https://www.instagram.com/creolchik/" target="_blank" class="footer__img-wrapper">
-			<img class="footer__flex-item-img" src="/img/footer/icons/instagram.svg" alt="instagram">
-		</a>
-		<a href="@creolchik" target="_blank" class="footer__img-wrapper">
-			<img class="footer__flex-item-img" src="/img/footer/icons/telegram.svg" alt="telegram">
-		</a>
-		<a href="https://www.pinterest.ru/creolchik/_saved/" target="_blank" class="footer__img-wrapper">
-			<img class="footer__flex-item-img" src="/img/footer/icons/pinterest.svg" alt="pinterest">
-		</a>
-		<a href="https://www.facebook.com/olga.volkova.1238" target="_blank" class="footer__img-wrapper">
-			<img class="footer__flex-item-img" src="/img/footer/icons/facebook.svg" alt="facebook">
-		</a>
+		@@include('common-html-components/socials.html')
 	</div>
-	<p class="footer__site-owner">All rights reserved, Moont, Olga Volkova, 2022</p>
+	
+	<p class="footer__site-owner">All rights reserved, Moont, Olga Volkova, 2021</p>
 </footer>
 

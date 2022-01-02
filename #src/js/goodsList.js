@@ -1,13 +1,21 @@
 const goods = [
 	{
-		id: 1,
+		//ru
 		title: 'пончо, размер М/Л',
 		discription: 'Ручная вышивка, эко-кожа, замша',
 		previewDiscription: 'Ручная вышивка, эко-кожа, замша',
+		altText:'пончо',
+		urlToFullInformation: '/ru/collections/1/',
+		//en
+		titleEn: 'poncho, one size M/L',
+		discriptionEn: 'Embroidery, eco-lather, suede',
+		previewDiscriptionEn: 'Embroidery, eco-lather, suede',
+		altTextEn:'poncho',
+		urlToFullInformationEn: '/en/collections/1/',
+		//common
+		id: 1,
 		sale: true,
 		sliderImg: '/img/collections/1/preview-img/1.jpg',
-		altText:'пончо',
-		urlToFullInformation: "/ru/collections/1/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_1',
 		galeryImages: [
@@ -20,14 +28,22 @@ const goods = [
 		],
 	},
 	{
-		id:  2,
+		//ru
 		title: 'юбка',
 		discription: 'Ручная вышивка, эко-кожа с подкладкой из сетки',
 		previewDiscription: 'Ручная вышивка, эко-кожа',
+		altText:'юбка',
+		urlToFullInformation: '/ru/collections/2/',
+		//en
+		titleEn: 'skirt',
+		discriptionEn: 'Embroidery, eco-lather',
+		previewDiscriptionEn: 'Embroidery, eco-lather',
+		altTextEn:'skirt',
+		urlToFullInformationEn: '/en/collections/2/',
+		//common
+		id:  2,
 		sale: true,
 		sliderImg: '/img/collections/2/preview-img/1.jpg',
-		altText:'юбка',
-		urlToFullInformation: "/ru/collections/2/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_2',
 		galeryImages: [
@@ -42,14 +58,22 @@ const goods = [
 		],
 	},
 	{
-		id:  3,
+		//ru
 		title: 'худи, размер L',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
+		altText:'худи',
+		urlToFullInformation: '/ru/collections/3/',
+		//en
+		titleEn: 'hoody, one size L',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'hoody',
+		urlToFullInformationEn: '/en/collections/3/',
+		//common
+		id:  3,
 		sale: true,
 		sliderImg: '/img/collections/3/preview-img/1.jpg',
-		altText:'худи',
-		urlToFullInformation: "/ru/collections/3/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_3',
 		galeryImages: [
@@ -61,14 +85,22 @@ const goods = [
 		],
 	},
 	{
-		id:  4,
+		//ru
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, вискоза, хлопок',
 		previewDiscription:'Ручная вышивка, вискоза, хлопок',
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/4/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton, viscose',
+		previewDiscriptionEn: 'Embroidery, cotton, viscose',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/4/',
+		//common
+		id:  4,
 		sale: false,
 		sliderImg: '/img/collections/4/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/4/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_4',
 		galeryImages: [
@@ -81,14 +113,22 @@ const goods = [
 		],
 	},
 	{
-		id:  5,
+		//ru
 		title: 'худи, размер М',
 		discription: 'Ручная вышивка, кашемир, вискоза',
 		previewDiscription:'Ручная вышивка, кашемир, вискоза',
+		altText:'худи',
+		urlToFullInformation: '/ru/collections/5/',
+		//en
+		titleEn: 'hoody, one size M',
+		discriptionEn: 'Embroidery, cashemere, viscose',
+		previewDiscriptionEn: 'Embroidery, cashemere, viscose',
+		altTextEn:'hoody',
+		urlToFullInformationEn: '/en/collections/5/',
+		//common
+		id:  5,
 		sale: false,
 		sliderImg: '/img/collections/5/preview-img/1.jpg',
-		altText:'худи',
-		urlToFullInformation: "/ru/collections/5/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_5',
 		galeryImages: [
@@ -101,14 +141,22 @@ const goods = [
 		],
 	},
 	{
-		id:  6,
+		//ru
 		title: 'худи, размер М',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
+		altText:'худи',
+		urlToFullInformation: '/ru/collections/6/',
+		//en
+		titleEn: 'hoody, one size M',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'hoody',
+		urlToFullInformationEn: '/en/collections/6/',
+		//common
+		id:  6,
 		sale: false,
 		sliderImg: '/img/collections/6/preview-img/1.jpg',
-		altText:'худи',
-		urlToFullInformation: "/ru/collections/6/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_6',
 		galeryImages: [
@@ -121,14 +169,22 @@ const goods = [
 		],
 	},
 	{
-		id:  7,
+		//ru
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, вискоза, хлопок',
 		previewDiscription: 'Ручная вышивка, вискоза, хлопок', 
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/7/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton, viscose',
+		previewDiscriptionEn: 'Embroidery, cotton, viscose',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/7/',
+		//common
+		id:  7,
 		sale: false,
 		sliderImg: '/img/collections/7/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/7/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_7',
 		galeryImages: [
@@ -141,14 +197,22 @@ const goods = [
 		],
 	},
 	{
-		id:  8,
+		//ru
 		title: 'футболка, размер М',
-		discription: 'Ручная вышивка, хлопок',
+		discription: 'Ручная вышивка, хлопок <br>по мотивам картины Рокуела Кента',
 		previewDiscription: 'Ручная вышивка, хлопок',  
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/8/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton<br> Inspired by Rockwell Kent',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/8/',
+		//common
+		id:  8,
 		sale: false,
 		sliderImg: '/img/collections/8/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/8/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_8',
 		galeryImages: [
@@ -160,14 +224,22 @@ const goods = [
 		],
 	},
 	{
-		id:  9,
+		//ru
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, хлопок',
-		previewDiscription: 'Ручная вышивка, хлопок',  
+		previewDiscription: 'Ручная вышивка, хлопок', 
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/9/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, acrylic paint, cotton',
+		previewDiscriptionEn: 'Embroidery, acrylic paint, cotton',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/9/',
+		//common
+		id:  9,
 		sale: false,
 		sliderImg: '/img/collections/9/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/9/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_9',
 		galeryImages: [
@@ -178,14 +250,21 @@ const goods = [
 		],
 	},
 	{
-		id:  10,
 		title: 'бомбер, размер М',
 		discription: 'Ручная вышивка',
-		previewDiscription: 'Ручная вышивка',  
+		previewDiscription: 'Ручная вышивка', 
+		altText:'бомбер',
+		urlToFullInformation: '/ru/collections/10/',
+		//en
+		titleEn: 'bomber',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'bomber',
+		urlToFullInformationEn: '/en/collections/10/',
+		//common
+		id:  10,
 		sale: false,
 		sliderImg: '/img/collections/10/preview-img/1.jpg',
-		altText:'бомбер',
-		urlToFullInformation: "/ru/collections/10/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_10',
 		galeryImages: [
@@ -196,14 +275,21 @@ const goods = [
 		],
 	},
 	{
-		id:  11,
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
+		altText:'нет в продаже',
+		urlToFullInformation: '/ru/collections/11/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/11/',
+		//common
+		id:  11,
 		sale: false,
 		sliderImg: '/img/collections/11/preview-img/1.jpg',
-		altText:'нет в продаже',
-		urlToFullInformation: "/ru/collections/11/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_11',
 		galeryImages: [

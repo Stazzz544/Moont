@@ -1,7 +1,85 @@
 @@include('lib/swiper-bundle.min.js');
-@@include('htmlGenerators.js')
+@@include('htmlGenerators.js');
 @@include('goodsList.js'); // весь список товара (аналог json, только в js объекте)
 
+
+const globSiteInfo= {
+	numPage: 1,
+	currentLocation: '',
+	arrCurrentLocation: [],
+	enLang: false,
+	totalProducts: goods.length,
+	nextProductPage: '',
+	prevProductPage: '',
+
+	numPageFunc() {
+		if(this.arrCurrentLocation[this.arrCurrentLocation.length - 3] === 'collections') {
+			this.numPage = +this.arrCurrentLocation[this.arrCurrentLocation.length - 2]
+		}
+		else if(typeof(+this.arrCurrentLocation[this.arrCurrentLocation.length - 4]) == 'number') {
+			this.numPage = +this.arrCurrentLocation[this.arrCurrentLocation.length - 2];
+		}
+	},
+	currentLanguageOfPageFunc() {
+		if (this.arrCurrentLocation[1] &&  this.arrCurrentLocation[1] == 'en') this.enLang = true;
+		else this.enLang = false;
+	},
+	currentLocationFunc() {
+		this.currentLocation = document.location.pathname;
+	},
+	arrCurrentLocationFunc() {
+		this.arrCurrentLocation = this.currentLocation.split('/');
+	},
+	productPageFunc() {
+		if (this.numPage == 1){
+			this.prevProductPage = this.totalProducts;
+			this.nextProductPage = this.numPage + 1;
+		}
+		else if(this.numPage == this.totalProducts) {
+			this.prevProductPage = this.numPage - 1;
+			this.nextProductPage = 1;
+		}
+		else {
+			this.prevProductPage = this.numPage - 1;
+			this.nextProductPage = this.numPage + 1;
+		};
+	}
+};
+
+globSiteInfo.currentLocationFunc();
+globSiteInfo.arrCurrentLocationFunc();
+globSiteInfo.currentLanguageOfPageFunc();
+globSiteInfo.numPageFunc();
+globSiteInfo.productPageFunc();
+
+console.log(globSiteInfo) 
+
+switch (globSiteInfo.currentLocation) {
+	case '/':
+	case '/en/':
+		renderCardsForSlider(goods);
+		break;
+	case `/ru/collections/${globSiteInfo.numPage}/`:
+	case `/en/collections/${globSiteInfo.numPage}/`:
+		renderPageOfProduct(goods, globSiteInfo.numPage);
+		break;
+	case `/ru/collections/`:
+	case `/en/collections/`:
+		renderPageOfCollections(goods);
+		break;
+	case `/ru/collections/year/${globSiteInfo.numPage}/`:
+	case `/en/collections/year/${globSiteInfo.numPage}/`:
+		renderPageOfCollections(goods, false, globSiteInfo.numPage);
+		break;
+	case `/ru/for-sale/`:
+	case `/en/for-sale/`:
+		renderPageOfCollections(goods, true);
+		break
+};
+
+burger();
+activeClassesForNavMenu(globSiteInfo);
+dropdownRender(goods);
 
 //===================================================
 //функция для подключения webp
@@ -20,13 +98,10 @@ testWebP(function (support) {
 //===================================================
 //Функция удаления и добавления класса активности в меню навигации
 
-
-activeClassesForNavMenu()
-
-function activeClassesForNavMenu() {
+function activeClassesForNavMenu(globSiteInfo) {
 	const menuLinks = document.querySelectorAll('.menu__link');
-	const currentLocation = document.location.pathname.split('/');
-	const pathName = currentLocation[currentLocation.length - 2];
+	const arrCurrentLocation = globSiteInfo.arrCurrentLocation;
+	const pathName = arrCurrentLocation[arrCurrentLocation.length - 2];
 
 	menuLinks.forEach(e => e.closest('.menu__link-wrapper').classList.remove('active'));
 
@@ -35,16 +110,15 @@ function activeClassesForNavMenu() {
 		const locationName = linkLocation[linkLocation.length - 1];
 	
 		if (locationName === pathName) e.closest('.menu__link-wrapper').classList.add('active');
-		else if(currentLocation.find(e => e === 'collections')){
+		else if(arrCurrentLocation.find(e => e === 'collections')){
 			document.querySelectorAll('.dropdown-wrapper').forEach(e => e.classList.add('active'));
 			return false;
+		} else if(locationName == '' && pathName == 'en') {
+			document.querySelector('.menu__link-wrapper-home').classList.add('active');
 		}
 	});
 };
 
-//===================================================
-
-burger();
 
 function burger() {
 	const burger = document.querySelector('#burger');
@@ -58,53 +132,13 @@ function burger() {
 	});
 };
 
-//============================================
-//Функции отрисовки шаблонов
-
-const currentLocation = document.location.pathname;
-const arrCurrentLocation = currentLocation.split('/');
-let numPage;//номер страницы  - это номер товара и его id, также это номер папки где лежит index.html товара в родилеьской папке collections
-
-if(arrCurrentLocation[arrCurrentLocation.length - 3] === 'collections') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
-else if(typeof(+arrCurrentLocation[arrCurrentLocation.length - 4]) == 'number') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
-
-
-console.log('currentLocation', currentLocation)
-console.log(numPage)
-
-const enLang = currentLanguageOfPage(arrCurrentLocation);
-
-function currentLanguageOfPage(arrCurrentLocation){
-	if (arrCurrentLocation[1] == 'en') return true;
-	else false;
-}
-
-switch (currentLocation) {
-	case '/'://страница home   ru
-		renderRusCardsForSlider(goods);
-		break;
-	case `/ru/collections/${numPage}/`:
-		renderRusPageOfProduct(goods, numPage);
-		break;
-	case `/ru/collections/`:
-		renderRusPageOfCollections(goods);
-		break;
-	case `/ru/collections/year/${numPage}/`:
-		renderRusPageOfCollections(goods, false, numPage);
-		break;
-	case `/ru/for-sale/`:
-		renderRusPageOfCollections(goods, true);
-		break;
-}
-
-//функция получает уникальные года коллекций из главного объекта, возвращает массив
+//функция получает уникальные года в коллекцию из главного объекта, возвращает массив
 function arrYearsOfCollections(goodsObj){
 	const yearsOfCollectionsSet = new Set();
-	goodsObj.forEach(e => yearsOfCollectionsSet.add(e.collection));
+	goodsObj.forEach(product => yearsOfCollectionsSet.add(product.collection));
 	return Array.from(yearsOfCollectionsSet).sort((a,b)=>b-a);
 };
 
-dropdownRender(goods);
 
 function dropdownRender(goodsObj) {
 	const yearsOfCollectionsArr = arrYearsOfCollections(goodsObj);
@@ -117,15 +151,25 @@ function dropdownRender(goodsObj) {
 	});
 };
 
+//субменю в мобильной версии
+document.querySelector('.submenu__activator').addEventListener('click', () => {
+	const submenu = document.querySelector('.submenu');
+	submenu.classList.add('active');
+	document.querySelector('.submenu__wrapper-item-back').addEventListener('click', () => {
+		submenu.classList.remove('active');
+	})
+})
+
+
 //функция отрисовывает страницу с коллекциями и годами.
-function renderRusPageOfCollections(goodsObj, forSale=false, year = false) {
+function renderPageOfCollections(goodsObj, forSale=false, year = false) {
 
 	if (forSale) { //фильтр по наличию товара для страницы "На продажу"
 		goodsObj = goodsObj.filter(e => e.sale == true);
 
 	} else if (year) { //фильтр по годам для дропдауна страницы "Коллекции"
 		goodsObj = goodsObj.filter(e => e.collection == year);
-	}
+	};
 
 	const collectionGaleryContainer = document.querySelector('.collection-galery__container');
 
@@ -137,37 +181,39 @@ function renderRusPageOfCollections(goodsObj, forSale=false, year = false) {
 	//проверяем год в карточке и отправляем её в блок коллекции 2021, 2022 и т.д.
 	goodsObj.forEach(product => {
 		document.querySelector(`.collection-galery__${product.collection}`)
-		.innerHTML += htmlGeneratorProductTemplate(product)
+		.innerHTML += htmlGeneratorProductTemplate(product);
 	});
-
-
 };
 
 //функция добавляет карточки в слайдер
-function renderRusCardsForSlider(goodsObj) {
-	const swiperContainer = document.querySelector('#swiper-out');
+function renderCardsForSlider(goodsObj) {
+	const swiperContainer2021 = document.querySelector('#collection-2021');
 
 	goodsObj.forEach(product => {
-		const swiperSlide = document.createElement('div');
-		swiperSlide.classList.add('swiper-slide');
-
-		htmlGeneratorSliderTemlate(swiperSlide, product)
-
-		swiperContainer.append(swiperSlide);
+		if (product.collection === 2021) {
+			const swiperSlide = document.createElement('div');
+			swiperSlide.classList.add('swiper-slide');
+			htmlGeneratorSliderTemlate(swiperSlide, product);
+			swiperContainer2021.append(swiperSlide);
+		}
 	});
 };
 
 //функция рисует содержиме страницы с полным отображением одного товара и галереей изобраджений
-function renderRusPageOfProduct(goodsObj, numPage) {
-	const collectionWrapper = document.querySelector('.collection__wrapper');
+function renderPageOfProduct(goodsObj, numPage) {
+	const collectionGridContainer = document.querySelector('.collection__wrapper');
+	const collectionWrapper = document.querySelector('.collection');
 
 	const gridContainer = document.createElement('div');
 	const collectionDiscription = document.createElement('div');
 	const collectionGridMobile = document.createElement('div');
+	const nextPrevArrow = document.createElement('div');
 	
 	gridContainer.classList.add('collection__grid', 'product_' + numPage);
 	collectionDiscription.classList.add('collection__discription');
 	collectionGridMobile.classList.add('collection__grid', 'mobile');
+	nextPrevArrow.classList.add('collection__arrow-container');
+
 
 	goodsObj.forEach((product, index) => {
 		if(product.id == numPage) {
@@ -175,14 +221,15 @@ function renderRusPageOfProduct(goodsObj, numPage) {
 			collectionDiscription.innerHTML += htmlGeneratorCollectionDiscription(product);
 			collectionGridMobile.innerHTML += htmlGeneratorcollectionGridMobil(product, index, numPage);
 			collectionGridMobile.classList.add(`${product.gridStyleTamplate}`);
+			nextPrevArrow.innerHTML += htmlGeneratorNextPrevArrow(globSiteInfo.prevProductPage, globSiteInfo.nextProductPage);
 		};
 	});
 
-	collectionWrapper.append(gridContainer);
-	collectionWrapper.append(collectionDiscription);
-	collectionWrapper.append(collectionGridMobile);
+	collectionGridContainer.append(gridContainer);
+	collectionGridContainer.append(collectionDiscription);
+	collectionGridContainer.append(collectionGridMobile);
+	collectionWrapper.append(nextPrevArrow);
 }
-
 
 //===================================================
 //slider-swiper
@@ -199,7 +246,7 @@ const swiper = new Swiper('.swiper', {
 			slidesPerView: 6,
 		}
 	},
-	// autoplay: {
-	// 	delay: 1500,
-	//  },
+	autoplay: {
+		delay: 1500,
+	},
 });

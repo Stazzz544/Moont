@@ -10085,7 +10085,7 @@ function htmlGeneratorYearOfCollection(year){
 		<div class="collection-galery-wrapper">
 			<div class="collection-galery__grid">
 			
-				${enLang ? 
+				${globSiteInfo.enLang ? 
 					`<h2 class="collection-galery__title">Collection ${year}</h2>`
 					:
 					`<h2 class="collection-galery__title">Коллекция ${year}</h2>`
@@ -10101,15 +10101,36 @@ function htmlGeneratorProductTemplate(product){
 	return`
 		<div class="card-type-2 card-type-2__grid-item">
 			<div class="card-type-2__flex-wrapper">
-				<a href=${product.urlToFullInformation} class="card-type-2__img-wrapper">
-					<img src=${product.sliderImg} alt=${product.previewDiscription}>
+
+			${globSiteInfo.enLang ? 
+				`<a href=${product.urlToFullInformationEn} class="card-type-2__img-wrapper">
+					<img src=${product.sliderImg} alt=${product.previewDiscriptionEn}>
 				</a>
 				<div class="card-type-2__discription-wrapper">
-					<h3 class="card-type-2__discription-title">${product.title}</h3>
-					<p class="card-type-2__discription-text">${product.previewDiscription}</p>
+					<h3 class="card-type-2__discription-title">${product.titleEn}</h3>
+					<p class="card-type-2__discription-text">${product.previewDiscriptionEn}</p>
 					<div class="card-type-1__btn-wrapper">
-					<button ${product.sale ? '' : 'disabled'} class="card-type-1__discription-button btn__type-1 btn__type-1">${product.sale ? 'узнать цену':'нет в продаже'}</button>
-				</div>
+					${product.sale ? 
+						`<a href="mailto: fashion@moont.ru?body=Hi,%0D%0A%0D%0AI'm interested in:%0D%0A%0D%0A${product.titleEn}, ${product.previewDiscriptionEn}, ${product.collection}" class="card-type-1__discription-button btn__type-1">order</a>`
+						:
+						`<a class="card-type-1__discription-button btn__type-1 disabled">sold</a>`
+					}
+				</div>`
+			:
+			`<a href=${product.urlToFullInformation} class="card-type-2__img-wrapper">
+				<img src=${product.sliderImg} alt=${product.previewDiscription}>
+			</a>
+			<div class="card-type-2__discription-wrapper">
+				<h3 class="card-type-2__discription-title">${product.title}</h3>
+				<p class="card-type-2__discription-text">${product.previewDiscription}</p>
+				<div class="card-type-1__btn-wrapper">
+				${product.sale ? 
+					`<a href='mailto: fashion@moont.ru?body=Здравствуйте,%0D%0A%0D%0AИнтересует цена:%0D%0A%0D%0A${product.title}, ${product.previewDiscription}, ${product.collection}' class="card-type-1__discription-button btn__type-1">узнать цену</a>`
+					:
+					`<a class="card-type-1__discription-button btn__type-1 disabled">нет в продаже</a>`
+					}
+			</div>`
+			}
 			</div>
 		</div>
 	`
@@ -10119,17 +10140,43 @@ function htmlGeneratorSliderTemlate(swiperSlide, product) {
 	swiperSlide.innerHTML = `
 		<div class="card-type-1">
 			<div class="card-type-1__flex-wrapper">
-				<a href=${product.urlToFullInformation}>
+
+				${globSiteInfo.enLang ? 
+				`<a href=${product.urlToFullInformationEn}>
+					<div class="card-type-1__img-wrapper">
+						<img src=${product.sliderImg} alt=${product.altTextEn}>
+					</div>
+				</a>`
+				:
+				`<a href=${product.urlToFullInformation}>
 					<div class="card-type-1__img-wrapper">
 						<img src=${product.sliderImg} alt=${product.altText}>
 					</div>
-				</a>
+				</a>`
+				}
+
 				<div class="card-type-1__discription-wrapper">
-					<h3 class="card-type-1__discription-title">${product.title}</h3>
-					<p class="card-type-1__discription-text">${product.previewDiscription}</p>
-					<div class="card-type-1__btn-wrapper">
-						<button ${product.sale ? '' : 'disabled'} class="card-type-1__discription-button btn__type-1 btn__type-1">${product.sale ? 'узнать цену':'нет в продаже'}</button>
-					</div>
+					${globSiteInfo.enLang ?
+						`<h3 class="card-type-1__discription-title">${product.titleEn}</h3>
+						<p class="card-type-1__discription-text">${product.previewDiscriptionEn}</p>
+						<div class="card-type-1__btn-wrapper">
+						${product.sale ? 
+							`<a href="mailto: fashion@moont.ru?body=Hi,%0D%0A%0D%0AI'm interested in:%0D%0A%0D%0A${product.titleEn}, ${product.previewDiscriptionEn}, ${product.collection}" class="card-type-1__discription-button btn__type-1">order</a>`
+							:
+							`<a class="card-type-1__discription-button btn__type-1 disabled">sold</a>`
+							}
+						</div>`
+						:
+						`<h3 class="card-type-1__discription-title">${product.title}</h3>
+						<p class="card-type-1__discription-text">${product.previewDiscription}</p>
+						<div class="card-type-1__btn-wrapper">
+							${product.sale ? 
+							`<a href='mailto: fashion@moont.ru?body=Здравствуйте,%0D%0A%0D%0AИнтересует цена:%0D%0A%0D%0A${product.title}, ${product.previewDiscription}, ${product.collection}' class="card-type-1__discription-button btn__type-1">узнать цену</a>`
+							:
+							`<a class="card-type-1__discription-button btn__type-1 disabled">нет в продаже</a>`
+							}
+						</div>`
+					}
 				</div>
 			</div>
 		</div>
@@ -10139,9 +10186,15 @@ function htmlGeneratorSliderTemlate(swiperSlide, product) {
 function htmlGeneratordropDownMenu (year){
 	return `
 		<li class="menu__collection-dropdown-item">
-			<a href="/ru/collections/year/${year}" class="menu__link">
+		${globSiteInfo.enLang ?
+			`<a href="/en/collections/year/${year}" class="menu__link">
+				<span class="menu__link-text">collection ${year}</span>
+			</a>`
+			:
+			`<a href="/ru/collections/year/${year}" class="menu__link">
 				<span class="menu__link-text">коллекция ${year}</span>
-			</a>
+			</a>`
+		}
 		</li>
 	`;
 };
@@ -10150,18 +10203,34 @@ function htmlGeneratordropDownMenu (year){
 function htmlGeneratorGridContainer (product, index, img){
 	return `
 		<div class="collection__grid-item ${product.gridStyleTamplate} img-${index+1}">
-			<img class="collection__grid-img" src=${img.link} alt=${img.altText}>
+		${globSiteInfo.enLang ? 
+			`<img class="collection__grid-img" src=${img.link} alt=${img.altTextEn}>`
+		:
+			`<img class="collection__grid-img" src=${img.link} alt=${img.altText}>`
+		}
 		</div>
 	`;
 };
 
 function htmlGeneratorCollectionDiscription(product) {
 	return `
-		<div class="collection__discription">
-			<h1 class="collection__title">${product.title}</h1>
-			<div class="collection__text">${product.discription}</div>
-			<button ${product.sale ? '' : 'disabled'} class=" btn1 btn__type-1 collection__btn">${product.sale ? 'узнать цену':'нет в продаже'}</button>
-		</div>
+	${globSiteInfo.enLang ?
+		`<h1 class="collection__title">${product.titleEn}</h1>
+		<div class="collection__text">${product.discriptionEn}</div>
+		${product.sale ? 
+			`<a href="mailto: fashion@moont.ru?body=Hi,%0D%0A%0D%0AI'm interested in:%0D%0A%0D%0A${product.titleEn}, ${product.previewDiscriptionEn}, ${product.collection}" class="card-type-1__discription-button collection__btn btn__type-1">order</a>`
+			:
+			`<a class="card-type-1__discription-button collection__btn btn__type-1 disabled">sold</a>`
+			}`
+		:
+		`<h1 class="collection__title">${product.title}</h1>
+		<div class="collection__text">${product.discription}</div>
+		${product.sale ? 
+			`<a href='mailto: fashion@moont.ru?body=Здравствуйте,%0D%0A%0D%0AИнтересует цена:%0D%0A%0D%0A${product.title}, ${product.previewDiscription}, ${product.collection}' class="card-type-1__discription-button collection__btn btn__type-1">узнать цену</a>`
+			:
+			`<a class="card-type-1__discription-button collection__btn btn__type-1 disabled">нет в продаже</a>`
+			}`
+	}
 	`;
 };
 
@@ -10169,21 +10238,53 @@ function htmlGeneratorcollectionGridMobil(product, index, numPage) {
 	return `
 		<div class="collection__grid ${product.gridStyleTamplate} mobile ">
 			<div class="collection__grid-item mobile ${product.gridStyleTamplate} img-${index+1}">
-				<img class="collection__grid-img" src="/img/collections/${numPage}/1.jpg" alt=${product.title}>
+			${globSiteInfo.enLang ? 
+				`<img class="collection__grid-img" src="/img/collections/${numPage}/1.jpg" alt=${product.titleEn}>`
+			:
+				`<img class="collection__grid-img" src="/img/collections/${numPage}/1.jpg" alt=${product.title}>`
+			}
 			</div>
 		</div>
 	`;
 }
+
+function htmlGeneratorNextPrevArrow(prevPage, nextPage) {
+	return `
+		<div class="collection__arrow-prev">
+		${globSiteInfo.enLang ? 
+			`<a class="collection__arrow-prev-link" href="/en/collections/${prevPage}">previous</a>`
+			:
+			`<a class="collection__arrow-prev-link" href="/ru/collections/${prevPage}">предыдущий</a>`
+		}
+		</div>
+
+		<div class="collection__arrow-next">
+		${globSiteInfo.enLang ? 
+			`<a class="collection__arrow-next-link" href="/en/collections/${nextPage}">next</a>`
+			:
+			`<a class="collection__arrow-next-link" href="/ru/collections/${nextPage}">следующий</a>`
+		}
+		</div>
+	`;
+};;
 const goods = [
 	{
-		id: 1,
+		//ru
 		title: 'пончо, размер М/Л',
 		discription: 'Ручная вышивка, эко-кожа, замша',
 		previewDiscription: 'Ручная вышивка, эко-кожа, замша',
+		altText:'пончо',
+		urlToFullInformation: '/ru/collections/1/',
+		//en
+		titleEn: 'poncho, one size M/L',
+		discriptionEn: 'Embroidery, eco-lather, suede',
+		previewDiscriptionEn: 'Embroidery, eco-lather, suede',
+		altTextEn:'poncho',
+		urlToFullInformationEn: '/en/collections/1/',
+		//common
+		id: 1,
 		sale: true,
 		sliderImg: '/img/collections/1/preview-img/1.jpg',
-		altText:'пончо',
-		urlToFullInformation: "/ru/collections/1/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_1',
 		galeryImages: [
@@ -10196,14 +10297,22 @@ const goods = [
 		],
 	},
 	{
-		id:  2,
+		//ru
 		title: 'юбка',
 		discription: 'Ручная вышивка, эко-кожа с подкладкой из сетки',
 		previewDiscription: 'Ручная вышивка, эко-кожа',
+		altText:'юбка',
+		urlToFullInformation: '/ru/collections/2/',
+		//en
+		titleEn: 'skirt',
+		discriptionEn: 'Embroidery, eco-lather',
+		previewDiscriptionEn: 'Embroidery, eco-lather',
+		altTextEn:'skirt',
+		urlToFullInformationEn: '/en/collections/2/',
+		//common
+		id:  2,
 		sale: true,
 		sliderImg: '/img/collections/2/preview-img/1.jpg',
-		altText:'юбка',
-		urlToFullInformation: "/ru/collections/2/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_2',
 		galeryImages: [
@@ -10218,14 +10327,22 @@ const goods = [
 		],
 	},
 	{
-		id:  3,
+		//ru
 		title: 'худи, размер L',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
+		altText:'худи',
+		urlToFullInformation: '/ru/collections/3/',
+		//en
+		titleEn: 'hoody, one size L',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'hoody',
+		urlToFullInformationEn: '/en/collections/3/',
+		//common
+		id:  3,
 		sale: true,
 		sliderImg: '/img/collections/3/preview-img/1.jpg',
-		altText:'худи',
-		urlToFullInformation: "/ru/collections/3/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_3',
 		galeryImages: [
@@ -10237,14 +10354,22 @@ const goods = [
 		],
 	},
 	{
-		id:  4,
+		//ru
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, вискоза, хлопок',
 		previewDiscription:'Ручная вышивка, вискоза, хлопок',
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/4/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton, viscose',
+		previewDiscriptionEn: 'Embroidery, cotton, viscose',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/4/',
+		//common
+		id:  4,
 		sale: false,
 		sliderImg: '/img/collections/4/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/4/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_4',
 		galeryImages: [
@@ -10257,14 +10382,22 @@ const goods = [
 		],
 	},
 	{
-		id:  5,
+		//ru
 		title: 'худи, размер М',
 		discription: 'Ручная вышивка, кашемир, вискоза',
 		previewDiscription:'Ручная вышивка, кашемир, вискоза',
+		altText:'худи',
+		urlToFullInformation: '/ru/collections/5/',
+		//en
+		titleEn: 'hoody, one size M',
+		discriptionEn: 'Embroidery, cashemere, viscose',
+		previewDiscriptionEn: 'Embroidery, cashemere, viscose',
+		altTextEn:'hoody',
+		urlToFullInformationEn: '/en/collections/5/',
+		//common
+		id:  5,
 		sale: false,
 		sliderImg: '/img/collections/5/preview-img/1.jpg',
-		altText:'худи',
-		urlToFullInformation: "/ru/collections/5/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_5',
 		galeryImages: [
@@ -10277,14 +10410,22 @@ const goods = [
 		],
 	},
 	{
-		id:  6,
+		//ru
 		title: 'худи, размер М',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
+		altText:'худи',
+		urlToFullInformation: '/ru/collections/6/',
+		//en
+		titleEn: 'hoody, one size M',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'hoody',
+		urlToFullInformationEn: '/en/collections/6/',
+		//common
+		id:  6,
 		sale: false,
 		sliderImg: '/img/collections/6/preview-img/1.jpg',
-		altText:'худи',
-		urlToFullInformation: "/ru/collections/6/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_6',
 		galeryImages: [
@@ -10297,14 +10438,22 @@ const goods = [
 		],
 	},
 	{
-		id:  7,
+		//ru
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, вискоза, хлопок',
 		previewDiscription: 'Ручная вышивка, вискоза, хлопок', 
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/7/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton, viscose',
+		previewDiscriptionEn: 'Embroidery, cotton, viscose',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/7/',
+		//common
+		id:  7,
 		sale: false,
 		sliderImg: '/img/collections/7/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/7/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_7',
 		galeryImages: [
@@ -10317,14 +10466,22 @@ const goods = [
 		],
 	},
 	{
-		id:  8,
+		//ru
 		title: 'футболка, размер М',
-		discription: 'Ручная вышивка, хлопок',
+		discription: 'Ручная вышивка, хлопок <br>по мотивам картины Рокуела Кента',
 		previewDiscription: 'Ручная вышивка, хлопок',  
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/8/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton<br> Inspired by Rockwell Kent',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/8/',
+		//common
+		id:  8,
 		sale: false,
 		sliderImg: '/img/collections/8/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/8/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_8',
 		galeryImages: [
@@ -10336,14 +10493,22 @@ const goods = [
 		],
 	},
 	{
-		id:  9,
+		//ru
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, хлопок',
-		previewDiscription: 'Ручная вышивка, хлопок',  
+		previewDiscription: 'Ручная вышивка, хлопок', 
+		altText:'футболка',
+		urlToFullInformation: '/ru/collections/9/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, acrylic paint, cotton',
+		previewDiscriptionEn: 'Embroidery, acrylic paint, cotton',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/9/',
+		//common
+		id:  9,
 		sale: false,
 		sliderImg: '/img/collections/9/preview-img/1.jpg',
-		altText:'футболка',
-		urlToFullInformation: "/ru/collections/9/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_9',
 		galeryImages: [
@@ -10354,14 +10519,21 @@ const goods = [
 		],
 	},
 	{
-		id:  10,
 		title: 'бомбер, размер М',
 		discription: 'Ручная вышивка',
-		previewDiscription: 'Ручная вышивка',  
+		previewDiscription: 'Ручная вышивка', 
+		altText:'бомбер',
+		urlToFullInformation: '/ru/collections/10/',
+		//en
+		titleEn: 'bomber',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'bomber',
+		urlToFullInformationEn: '/en/collections/10/',
+		//common
+		id:  10,
 		sale: false,
 		sliderImg: '/img/collections/10/preview-img/1.jpg',
-		altText:'бомбер',
-		urlToFullInformation: "/ru/collections/10/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_10',
 		galeryImages: [
@@ -10372,14 +10544,21 @@ const goods = [
 		],
 	},
 	{
-		id:  11,
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
+		altText:'нет в продаже',
+		urlToFullInformation: '/ru/collections/11/',
+		//en
+		titleEn: 't-shirt, one size M',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/11/',
+		//common
+		id:  11,
 		sale: false,
 		sliderImg: '/img/collections/11/preview-img/1.jpg',
-		altText:'нет в продаже',
-		urlToFullInformation: "/ru/collections/11/",
 		collection: 2021,
 		gridStyleTamplate: 'template-galery_11',
 		galeryImages: [
@@ -10391,6 +10570,84 @@ const goods = [
 	},
 ]; // весь список товара (аналог json, только в js объекте)
 
+
+const globSiteInfo= {
+	numPage: 1,
+	currentLocation: '',
+	arrCurrentLocation: [],
+	enLang: false,
+	totalProducts: goods.length,
+	nextProductPage: '',
+	prevProductPage: '',
+
+	numPageFunc() {
+		if(this.arrCurrentLocation[this.arrCurrentLocation.length - 3] === 'collections') {
+			this.numPage = +this.arrCurrentLocation[this.arrCurrentLocation.length - 2]
+		}
+		else if(typeof(+this.arrCurrentLocation[this.arrCurrentLocation.length - 4]) == 'number') {
+			this.numPage = +this.arrCurrentLocation[this.arrCurrentLocation.length - 2];
+		}
+	},
+	currentLanguageOfPageFunc() {
+		if (this.arrCurrentLocation[1] &&  this.arrCurrentLocation[1] == 'en') this.enLang = true;
+		else this.enLang = false;
+	},
+	currentLocationFunc() {
+		this.currentLocation = document.location.pathname;
+	},
+	arrCurrentLocationFunc() {
+		this.arrCurrentLocation = this.currentLocation.split('/');
+	},
+	productPageFunc() {
+		if (this.numPage == 1){
+			this.prevProductPage = this.totalProducts;
+			this.nextProductPage = this.numPage + 1;
+		}
+		else if(this.numPage == this.totalProducts) {
+			this.prevProductPage = this.numPage - 1;
+			this.nextProductPage = 1;
+		}
+		else {
+			this.prevProductPage = this.numPage - 1;
+			this.nextProductPage = this.numPage + 1;
+		};
+	}
+};
+
+globSiteInfo.currentLocationFunc();
+globSiteInfo.arrCurrentLocationFunc();
+globSiteInfo.currentLanguageOfPageFunc();
+globSiteInfo.numPageFunc();
+globSiteInfo.productPageFunc();
+
+console.log(globSiteInfo) 
+
+switch (globSiteInfo.currentLocation) {
+	case '/':
+	case '/en/':
+		renderCardsForSlider(goods);
+		break;
+	case `/ru/collections/${globSiteInfo.numPage}/`:
+	case `/en/collections/${globSiteInfo.numPage}/`:
+		renderPageOfProduct(goods, globSiteInfo.numPage);
+		break;
+	case `/ru/collections/`:
+	case `/en/collections/`:
+		renderPageOfCollections(goods);
+		break;
+	case `/ru/collections/year/${globSiteInfo.numPage}/`:
+	case `/en/collections/year/${globSiteInfo.numPage}/`:
+		renderPageOfCollections(goods, false, globSiteInfo.numPage);
+		break;
+	case `/ru/for-sale/`:
+	case `/en/for-sale/`:
+		renderPageOfCollections(goods, true);
+		break
+};
+
+burger();
+activeClassesForNavMenu(globSiteInfo);
+dropdownRender(goods);
 
 //===================================================
 //функция для подключения webp
@@ -10409,13 +10666,10 @@ testWebP(function (support) {
 //===================================================
 //Функция удаления и добавления класса активности в меню навигации
 
-
-activeClassesForNavMenu()
-
-function activeClassesForNavMenu() {
+function activeClassesForNavMenu(globSiteInfo) {
 	const menuLinks = document.querySelectorAll('.menu__link');
-	const currentLocation = document.location.pathname.split('/');
-	const pathName = currentLocation[currentLocation.length - 2];
+	const arrCurrentLocation = globSiteInfo.arrCurrentLocation;
+	const pathName = arrCurrentLocation[arrCurrentLocation.length - 2];
 
 	menuLinks.forEach(e => e.closest('.menu__link-wrapper').classList.remove('active'));
 
@@ -10424,16 +10678,15 @@ function activeClassesForNavMenu() {
 		const locationName = linkLocation[linkLocation.length - 1];
 	
 		if (locationName === pathName) e.closest('.menu__link-wrapper').classList.add('active');
-		else if(currentLocation.find(e => e === 'collections')){
+		else if(arrCurrentLocation.find(e => e === 'collections')){
 			document.querySelectorAll('.dropdown-wrapper').forEach(e => e.classList.add('active'));
 			return false;
+		} else if(locationName == '' && pathName == 'en') {
+			document.querySelector('.menu__link-wrapper-home').classList.add('active');
 		}
 	});
 };
 
-//===================================================
-
-burger();
 
 function burger() {
 	const burger = document.querySelector('#burger');
@@ -10447,53 +10700,13 @@ function burger() {
 	});
 };
 
-//============================================
-//Функции отрисовки шаблонов
-
-const currentLocation = document.location.pathname;
-const arrCurrentLocation = currentLocation.split('/');
-let numPage;//номер страницы  - это номер товара и его id, также это номер папки где лежит index.html товара в родилеьской папке collections
-
-if(arrCurrentLocation[arrCurrentLocation.length - 3] === 'collections') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
-else if(typeof(+arrCurrentLocation[arrCurrentLocation.length - 4]) == 'number') numPage = arrCurrentLocation[arrCurrentLocation.length - 2];
-
-
-console.log('currentLocation', currentLocation)
-console.log(numPage)
-
-const enLang = currentLanguageOfPage(arrCurrentLocation);
-
-function currentLanguageOfPage(arrCurrentLocation){
-	if (arrCurrentLocation[1] == 'en') return true;
-	else false;
-}
-
-switch (currentLocation) {
-	case '/'://страница home   ru
-		renderRusCardsForSlider(goods);
-		break;
-	case `/ru/collections/${numPage}/`:
-		renderRusPageOfProduct(goods, numPage);
-		break;
-	case `/ru/collections/`:
-		renderRusPageOfCollections(goods);
-		break;
-	case `/ru/collections/year/${numPage}/`:
-		renderRusPageOfCollections(goods, false, numPage);
-		break;
-	case `/ru/for-sale/`:
-		renderRusPageOfCollections(goods, true);
-		break;
-}
-
-//функция получает уникальные года коллекций из главного объекта, возвращает массив
+//функция получает уникальные года в коллекцию из главного объекта, возвращает массив
 function arrYearsOfCollections(goodsObj){
 	const yearsOfCollectionsSet = new Set();
-	goodsObj.forEach(e => yearsOfCollectionsSet.add(e.collection));
+	goodsObj.forEach(product => yearsOfCollectionsSet.add(product.collection));
 	return Array.from(yearsOfCollectionsSet).sort((a,b)=>b-a);
 };
 
-dropdownRender(goods);
 
 function dropdownRender(goodsObj) {
 	const yearsOfCollectionsArr = arrYearsOfCollections(goodsObj);
@@ -10506,15 +10719,25 @@ function dropdownRender(goodsObj) {
 	});
 };
 
+//субменю в мобильной версии
+document.querySelector('.submenu__activator').addEventListener('click', () => {
+	const submenu = document.querySelector('.submenu');
+	submenu.classList.add('active');
+	document.querySelector('.submenu__wrapper-item-back').addEventListener('click', () => {
+		submenu.classList.remove('active');
+	})
+})
+
+
 //функция отрисовывает страницу с коллекциями и годами.
-function renderRusPageOfCollections(goodsObj, forSale=false, year = false) {
+function renderPageOfCollections(goodsObj, forSale=false, year = false) {
 
 	if (forSale) { //фильтр по наличию товара для страницы "На продажу"
 		goodsObj = goodsObj.filter(e => e.sale == true);
 
 	} else if (year) { //фильтр по годам для дропдауна страницы "Коллекции"
 		goodsObj = goodsObj.filter(e => e.collection == year);
-	}
+	};
 
 	const collectionGaleryContainer = document.querySelector('.collection-galery__container');
 
@@ -10526,37 +10749,39 @@ function renderRusPageOfCollections(goodsObj, forSale=false, year = false) {
 	//проверяем год в карточке и отправляем её в блок коллекции 2021, 2022 и т.д.
 	goodsObj.forEach(product => {
 		document.querySelector(`.collection-galery__${product.collection}`)
-		.innerHTML += htmlGeneratorProductTemplate(product)
+		.innerHTML += htmlGeneratorProductTemplate(product);
 	});
-
-
 };
 
 //функция добавляет карточки в слайдер
-function renderRusCardsForSlider(goodsObj) {
-	const swiperContainer = document.querySelector('#swiper-out');
+function renderCardsForSlider(goodsObj) {
+	const swiperContainer2021 = document.querySelector('#collection-2021');
 
 	goodsObj.forEach(product => {
-		const swiperSlide = document.createElement('div');
-		swiperSlide.classList.add('swiper-slide');
-
-		htmlGeneratorSliderTemlate(swiperSlide, product)
-
-		swiperContainer.append(swiperSlide);
+		if (product.collection === 2021) {
+			const swiperSlide = document.createElement('div');
+			swiperSlide.classList.add('swiper-slide');
+			htmlGeneratorSliderTemlate(swiperSlide, product);
+			swiperContainer2021.append(swiperSlide);
+		}
 	});
 };
 
 //функция рисует содержиме страницы с полным отображением одного товара и галереей изобраджений
-function renderRusPageOfProduct(goodsObj, numPage) {
-	const collectionWrapper = document.querySelector('.collection__wrapper');
+function renderPageOfProduct(goodsObj, numPage) {
+	const collectionGridContainer = document.querySelector('.collection__wrapper');
+	const collectionWrapper = document.querySelector('.collection');
 
 	const gridContainer = document.createElement('div');
 	const collectionDiscription = document.createElement('div');
 	const collectionGridMobile = document.createElement('div');
+	const nextPrevArrow = document.createElement('div');
 	
 	gridContainer.classList.add('collection__grid', 'product_' + numPage);
 	collectionDiscription.classList.add('collection__discription');
 	collectionGridMobile.classList.add('collection__grid', 'mobile');
+	nextPrevArrow.classList.add('collection__arrow-container');
+
 
 	goodsObj.forEach((product, index) => {
 		if(product.id == numPage) {
@@ -10564,14 +10789,15 @@ function renderRusPageOfProduct(goodsObj, numPage) {
 			collectionDiscription.innerHTML += htmlGeneratorCollectionDiscription(product);
 			collectionGridMobile.innerHTML += htmlGeneratorcollectionGridMobil(product, index, numPage);
 			collectionGridMobile.classList.add(`${product.gridStyleTamplate}`);
+			nextPrevArrow.innerHTML += htmlGeneratorNextPrevArrow(globSiteInfo.prevProductPage, globSiteInfo.nextProductPage);
 		};
 	});
 
-	collectionWrapper.append(gridContainer);
-	collectionWrapper.append(collectionDiscription);
-	collectionWrapper.append(collectionGridMobile);
+	collectionGridContainer.append(gridContainer);
+	collectionGridContainer.append(collectionDiscription);
+	collectionGridContainer.append(collectionGridMobile);
+	collectionWrapper.append(nextPrevArrow);
 }
-
 
 //===================================================
 //slider-swiper
@@ -10588,7 +10814,7 @@ const swiper = new Swiper('.swiper', {
 			slidesPerView: 6,
 		}
 	},
-	// autoplay: {
-	// 	delay: 1500,
-	//  },
+	autoplay: {
+		delay: 1500,
+	},
 });
