@@ -1552,16 +1552,7 @@ html {
 .promo__about-discription-link {
   position: relative;
   color: #000000;
-}
-
-.promo__about-discription-link::after {
-  content: '';
-  width: 100%;
-  height: 1px;
-  background-color: #000000;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  border-bottom: 1px solid #000000;
 }
 
 .promo__slider-wrapper {
@@ -1640,14 +1631,8 @@ html {
   position: relative;
 }
 
-.about__discription-link.underline::after {
-  content: '';
-  width: 100%;
-  height: 1px;
-  background-color: #000000;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+.about__discription-link.underline {
+  border-bottom: 1px solid #000000;
 }
 
 .about__discription:first-of-type {

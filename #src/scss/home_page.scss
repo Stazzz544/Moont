@@ -57,22 +57,12 @@
 	&__about-discription-link{
 		position: relative;
 		color: #000000;
+		border-bottom: 1px solid #000000;
 	}
-	&__about-discription-link::after{
-		content:'';
-		width: 100%;
-		height: 1px;
-		background-color: #000000;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-	}
+	
 	&__slider-wrapper{
 		margin-top: 64px;
 		padding-left: 149px;
-	}
-	&__change-collection{
-
 	}
 	&__change{
 		font-weight: normal;

@@ -10646,8 +10646,9 @@ switch (globSiteInfo.currentLocation) {
 };
 
 burger();
-activeClassesForNavMenu(globSiteInfo);
+activeClassesInNavMenu(globSiteInfo);
 dropdownRender(goods);
+currentYearForFuter();
 
 //===================================================
 //функция для подключения webp
@@ -10666,7 +10667,7 @@ testWebP(function (support) {
 //===================================================
 //Функция удаления и добавления класса активности в меню навигации
 
-function activeClassesForNavMenu(globSiteInfo) {
+function activeClassesInNavMenu(globSiteInfo) {
 	const menuLinks = document.querySelectorAll('.menu__link');
 	const arrCurrentLocation = globSiteInfo.arrCurrentLocation;
 	const pathName = arrCurrentLocation[arrCurrentLocation.length - 2];
@@ -10682,7 +10683,7 @@ function activeClassesForNavMenu(globSiteInfo) {
 			document.querySelectorAll('.dropdown-wrapper').forEach(e => e.classList.add('active'));
 			return false;
 		} else if(locationName == '' && pathName == 'en') {
-			document.querySelector('.menu__link-wrapper-home').classList.add('active');
+			document.querySelectorAll('.menu__link-wrapper-home').forEach(e => e.classList.add('active'));
 		}
 	});
 };
@@ -10798,6 +10799,13 @@ function renderPageOfProduct(goodsObj, numPage) {
 	collectionGridContainer.append(collectionGridMobile);
 	collectionWrapper.append(nextPrevArrow);
 }
+//===================================================
+
+function currentYearForFuter(){
+	const date = new Date()
+	const year = date.getFullYear()
+	document.querySelector('#current-year').textContent = year
+}
 
 //===================================================
 //slider-swiper
@@ -10810,7 +10818,7 @@ const swiper = new Swiper('.swiper', {
 		320: {
 			slidesPerView: 1,
 		},
-		640: {
+		641: {
 			slidesPerView: 6,
 		}
 	},

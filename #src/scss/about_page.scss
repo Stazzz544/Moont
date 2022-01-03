@@ -41,15 +41,10 @@
 		color: #000000;
 		position: relative;
 	}
-	&__discription-link.underline::after{
-		content:'';
-		width: 100%;
-		height: 1px;
-		background-color: #000000;
-		position: absolute;
-		bottom: 0;
-		right: 0;
+	&__discription-link.underline{
+		border-bottom: 1px solid #000000;
 	}
+
 	&__discription:first-of-type {
 		margin-top: 24px;
 	}
