@@ -124,12 +124,14 @@ function activeClassesInNavMenu(globSiteInfo) {
 function burger() {
 	const burger = document.querySelector('#burger');
 	const body = document.querySelector('body');
+	const submenu = document.querySelector('.submenu ');
 
 	burger.addEventListener('click', () => {
 		if (!body.classList.contains('lock')) body.classList.add('lock');
 		else body.classList.remove('lock');
 		document.querySelector('#mainMenu').classList.toggle('active');
 		burger.classList.toggle('active');
+		if(submenu.classList.contains('active'))submenu.classList.remove('active');
 	});
 };
 
