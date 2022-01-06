@@ -10101,14 +10101,15 @@ function htmlGeneratorProductTemplate(product){
 	return`
 		<div class="card-type-2 card-type-2__grid-item">
 			<div class="card-type-2__flex-wrapper">
-
 			${globSiteInfo.enLang ? 
 				`<a href=${product.urlToFullInformationEn} class="card-type-2__img-wrapper">
 					<img src=${product.sliderImg} alt=${product.previewDiscriptionEn}>
 				</a>
 				<div class="card-type-2__discription-wrapper">
-					<h3 class="card-type-2__discription-title">${product.titleEn}</h3>
-					<p class="card-type-2__discription-text">${product.previewDiscriptionEn}</p>
+					<a card-type-1__discription-link href=${product.urlToFullInformationEn}>
+						<h3 class="card-type-2__discription-title">${product.titleEn}</h3>
+						<p class="card-type-2__discription-text">${product.previewDiscriptionEn}</p>
+					</a>
 					<div class="card-type-1__btn-wrapper">
 					${product.sale ? 
 						`<a href="mailto: fashion@moont.ru?body=Hi,%0D%0A%0D%0AI'm interested in:%0D%0A%0D%0A${product.titleEn}, ${product.previewDiscriptionEn}, ${product.collection}" class="card-type-1__discription-button btn__type-1">order</a>`
@@ -10121,8 +10122,10 @@ function htmlGeneratorProductTemplate(product){
 				<img src=${product.sliderImg} alt=${product.previewDiscription}>
 			</a>
 			<div class="card-type-2__discription-wrapper">
-				<h3 class="card-type-2__discription-title">${product.title}</h3>
-				<p class="card-type-2__discription-text">${product.previewDiscription}</p>
+				<a card-type-1__discription-link href=${product.urlToFullInformation}>
+					<h3 class="card-type-2__discription-title">${product.title}</h3>
+					<p class="card-type-2__discription-text">${product.previewDiscription}</p>
+				</a>
 				<div class="card-type-1__btn-wrapper">
 				${product.sale ? 
 					`<a href='mailto: fashion@moont.ru?body=Здравствуйте,%0D%0A%0D%0AИнтересует цена:%0D%0A%0D%0A${product.title}, ${product.previewDiscription}, ${product.collection}' class="card-type-1__discription-button btn__type-1">узнать цену</a>`
@@ -10157,9 +10160,12 @@ function htmlGeneratorSliderTemlate(swiperSlide, product) {
 
 				<div class="card-type-1__discription-wrapper">
 					${globSiteInfo.enLang ?
-						`<h3 class="card-type-1__discription-title">${product.titleEn}</h3>
-						<p class="card-type-1__discription-text">${product.previewDiscriptionEn}</p>
+						`<a card-type-1__discription-link href=${product.urlToFullInformationEn}>
+							<h3 class="card-type-1__discription-title">${product.titleEn}</h3>
+							<p class="card-type-1__discription-text">${product.previewDiscriptionEn}</p>
+						</a>
 						<div class="card-type-1__btn-wrapper">
+
 						${product.sale ? 
 							`<a href="mailto: fashion@moont.ru?body=Hi,%0D%0A%0D%0AI'm interested in:%0D%0A%0D%0A${product.titleEn}, ${product.previewDiscriptionEn}, ${product.collection}" class="card-type-1__discription-button btn__type-1">order</a>`
 							:
@@ -10167,9 +10173,12 @@ function htmlGeneratorSliderTemlate(swiperSlide, product) {
 							}
 						</div>`
 						:
-						`<h3 class="card-type-1__discription-title">${product.title}</h3>
-						<p class="card-type-1__discription-text">${product.previewDiscription}</p>
+						`<a card-type-1__discription-link href=${product.urlToFullInformation}>
+							<h3 class="card-type-1__discription-title">${product.title}</h3>
+							<p class="card-type-1__discription-text">${product.previewDiscription}</p>
+						</a>
 						<div class="card-type-1__btn-wrapper">
+
 							${product.sale ? 
 							`<a href='mailto: fashion@moont.ru?body=Здравствуйте,%0D%0A%0D%0AИнтересует цена:%0D%0A%0D%0A${product.title}, ${product.previewDiscription}, ${product.collection}' class="card-type-1__discription-button btn__type-1">узнать цену</a>`
 							:

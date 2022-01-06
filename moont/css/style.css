@@ -1248,8 +1248,15 @@ html {
           flex-direction: column;
 }
 
+.card-type-1__discription-link,
+.card-type-2__discription-link {
+  cursor: pointer;
+  color: #000000;
+}
+
 .card-type-1__discription-title,
 .card-type-2__discription-title {
+  color: #000000;
   margin-top: 20px;
   text-align: center;
   font-family: Helvetica;
@@ -1261,6 +1268,7 @@ html {
 
 .card-type-1__discription-text,
 .card-type-2__discription-text {
+  color: #000000;
   text-align: center;
   font-family: Helvetica;
   font-style: normal;
