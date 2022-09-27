@@ -2,74 +2,71 @@
 <html lang="en">
 
 <!-----------------head------------------------>
-		@@include('common-html-components/head.html')
+@@include('common-html-components/head.html')
 
 <body>
-	<div class="main-wrapper">
+    <div class="main-wrapper">
 
-<!-----------------header------------------------>
-		@@include('en/html-components/header.html')
+        <!-----------------header------------------------>
+        @@include('en/html-components/header.html')
 
-<!-----------------home page promo------------------------>
+        <!-----------------home page promo------------------------>
 
-		<main class="promo fullscreen">
+        <main class="promo fullscreen">
 
-			<div class="promo__flex-wrapper">
-				<div class="promo__flex-item for-huge-screen">
-					<img class="promo__img" src="/img/home_page/1.jpg" alt="promo-img">
-				</div>
-				<div class="promo__flex-item for-screen-and-tablet">
-					<img class="promo__img" src="/img/home_page/2.jpg" alt="promo-img">
-				</div>
-				<div class="promo__flex-item">
-					<img class="promo__img" src="/img/home_page/3.jpg" alt="promo-img">
-				</div>
-				<div class="promo__flex-item for-huge-screen">
-					<img class="promo__img" src="/img/home_page/4.jpg" alt="promo-img">
-				</div>
-				<div class="promo__flex-item for-screen-and-tablet">
-					<img class="promo__img for-huge-screen" src="/img/home_page/5.jpg" alt="promo-img">
-				</div>
-				<div class="promo__center-logo-wrapper">
-					<img class="promo__center-logo-img" src="/img/home_page/logo/center_logo.svg" alt="logo">
-				</div>
-			</div>
+            <div class="promo__flex-wrapper">
+                <!-- autoRender -->
+            </div>
 
-			<div class="promo__about-wrapper">
-				<h1 class="promo__about-title">moont</h1>
-				<p class="promo__about-discription">
-					Clothes with hand-made embroidery inspired by the stunning beauty of nature. Fresh like the first snowfall, the Russian brand Moont creates unique quality clothes for everyday wear.
-					<br/>
-					Please <a class="promo__about-discription-link" href="mailto:fashion@moont.ru">email us to collaborate or purchase.</a> 
-				</p>
-			</div>
+            <div class="promo__about-wrapper">
+                <h1 class="promo__about-title">moont</h1>
+                <p class="promo__about-discription">
+                    Clothes with hand-made embroidery inspired by the stunning beauty of nature. Fresh like the first
+                    snowfall, the Russian brand Moont creates unique quality clothes for everyday wear.
+                    <br />
+                    Please <a class="promo__about-discription-link" href="mailto:fashion@moont.ru">email us to
+                        collaborate or purchase.</a>
+                </p>
+            </div>
 
-			<div class="promo__slider-wrapper">
-				
-				<div class="promo__slider-swiper swiper">
+            <div class="promo__slider-wrapper">
 
-					<ul class="promo__change-collection">
-						<li class="promo__change 2021">COLLECTION 2021</li>
-					</ul>
-					
-					<!-- Additional required wrapper -->
-					<div class="swiper-wrapper" id='collection-2021'>
-						<!-- Slides -->
-					</div>
-					
-				</div>
-			</div>
+                <div class="promo__slider-collection-tab-btnWrapper">
+                    <ul class="promo__change-collection">
+                        <li data-year="2022" class="promo__change 2022 active">COLLECTION 2022</li>
+                    </ul>
+                    <ul class="promo__change-collection">
+                        <li data-year="2021" class="promo__change 2021">COLLECTION 2021</li>
+                    </ul>
+                </div>
 
-		</main>
 
-<!-----------------footer------------------------>
-		@@include('en/html-components/footer.html')
-		
-	</div>
+                <div data-year="2021" class="promo__slider-swiper swiper_2021 2021">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper 2021" id='collection-2021'>
+                        <!-- Slides -->
+                    </div>
+                </div>
 
-<!-----------------script------------------------>
-		@@include('common-html-components/script.html')
+                <div data-year="2022" class="promo__slider-swiper swiper_2022 2022 active">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper 2022" id='collection-2022'>
+                        <!-- Slides -->
+                    </div>
+                </div>
+
+            </div>
+
+    </main>
+
+    <!-----------------footer------------------------>
+    @@include('en/html-components/footer.html')
+
+    </div>
+
+    <!-----------------script------------------------>
+    @@include('common-html-components/script.html')
 
 </body>
 
-</html> 
+</html>

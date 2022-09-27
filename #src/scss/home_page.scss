@@ -4,10 +4,8 @@
 	flex: 1 1 auto;
 	&__flex-wrapper {
 		max-width: 100%;
-		
 		display: flex;
 		position: relative;
-
 	}
 
 	&__flex-item {
@@ -65,17 +63,29 @@
 		padding-left: 149px;
 	}
 	&__change{
-		font-weight: normal;
+		font-weight: 300;
 		font-size: 14px;
 		line-height: 16px;
 		letter-spacing: 0.1em;
 		cursor: pointer;
 		margin-bottom: 13px;
 	}
+    &__change.active{
+		font-weight: 500;
+	}
 	&__slider-swiper{
 		height: auto;
 		width: 2830px;
+        display: none;
 	}
+    &__slider-swiper.active{
+        display: block;
+        overflow: hidden;
+	}
+    &__slider-collection-tab-btnWrapper{
+        display: flex;
+        column-gap: 30px;
+    }
 }
 
 @media(max-width: 1350px){
@@ -120,4 +130,8 @@
 	.card-type-1__img-wrapper{
 		max-height: none;
 	}
+}
+
+.active {
+    display: block;
 }

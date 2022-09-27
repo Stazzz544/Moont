@@ -10147,13 +10147,13 @@ function htmlGeneratorSliderTemlate(swiperSlide, product) {
 				${globSiteInfo.enLang ? 
 				`<a href=${product.urlToFullInformationEn}>
 					<div class="card-type-1__img-wrapper">
-						<img src=${product.sliderImg} alt=${product.altTextEn}>
+						<img class="card-type-1__img" src=${product.sliderImg} alt=${product.altTextEn}>
 					</div>
 				</a>`
 				:
 				`<a href=${product.urlToFullInformation}>
 					<div class="card-type-1__img-wrapper">
-						<img src=${product.sliderImg} alt=${product.altText}>
+						<img  class="card-type-1__img" src=${product.sliderImg} alt=${product.altText}>
 					</div>
 				</a>`
 				}
@@ -10275,14 +10275,59 @@ function htmlGeneratorNextPrevArrow(prevPage, nextPage) {
 		}
 		</div>
 	`;
-};;
+};
+
+
+function htmlGeneratorMainScreenPromoImages() {
+    return (
+        globSiteInfo.promoScreenImages === "type_1" &&
+        `<div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/1.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img" src="/img/home_page/2.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item">
+              <img class="promo__img" src="/img/home_page/3.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/4.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img for-huge-screen" src="/img/home_page/5.jpg" alt="promo-img">
+          </div>
+          <div class="promo__center-logo-wrapper">
+              <img class="promo__center-logo-img" src="/img/home_page/logo/center_logo.svg" alt="logo">
+          </div>`
+        ||
+        globSiteInfo.promoScreenImages === "type_2" &&
+        `<div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/6-1.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img" src="/img/home_page/7-1.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item">
+              <img class="promo__img" src="/img/home_page/8.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/9.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img for-huge-screen" src="/img/home_page/10.jpg" alt="promo-img">
+          </div>
+          <div class="promo__center-logo-wrapper">
+              <img class="promo__center-logo-img" src="/img/home_page/logo/center_logo.svg" alt="logo">
+          </div>
+      `);
+  };
 const goods = [
 	{
 		//ru
 		title: 'пончо, размер М/Л',
 		discription: 'Ручная вышивка, эко-кожа, замша',
 		previewDiscription: 'Ручная вышивка, эко-кожа, замша',
-		altText:'пончо',
+		altText:'пончо, размер М/Л',
 		urlToFullInformation: '/ru/collections/1/',
 		//en
 		titleEn: 'poncho, one size M/L',
@@ -10340,7 +10385,7 @@ const goods = [
 		title: 'худи, размер L',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
-		altText:'худи',
+		altText:'худи, размер L',
 		urlToFullInformation: '/ru/collections/3/',
 		//en
 		titleEn: 'hoody, one size L',
@@ -10367,7 +10412,7 @@ const goods = [
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, вискоза, хлопок',
 		previewDiscription:'Ручная вышивка, вискоза, хлопок',
-		altText:'футболка',
+		altText:'футболка, размер М',
 		urlToFullInformation: '/ru/collections/4/',
 		//en
 		titleEn: 't-shirt, one size M',
@@ -10395,7 +10440,7 @@ const goods = [
 		title: 'худи, размер М',
 		discription: 'Ручная вышивка, кашемир, вискоза',
 		previewDiscription:'Ручная вышивка, кашемир, вискоза',
-		altText:'худи',
+		altText:'худи, размер М',
 		urlToFullInformation: '/ru/collections/5/',
 		//en
 		titleEn: 'hoody, one size M',
@@ -10423,7 +10468,7 @@ const goods = [
 		title: 'худи, размер М',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
-		altText:'худи',
+		altText:'худи, размер М',
 		urlToFullInformation: '/ru/collections/6/',
 		//en
 		titleEn: 'hoody, one size M',
@@ -10451,7 +10496,7 @@ const goods = [
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, вискоза, хлопок',
 		previewDiscription: 'Ручная вышивка, вискоза, хлопок', 
-		altText:'футболка',
+		altText:'футболка, размер М',
 		urlToFullInformation: '/ru/collections/7/',
 		//en
 		titleEn: 't-shirt, one size M',
@@ -10479,7 +10524,7 @@ const goods = [
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, хлопок <br>по мотивам картины Рокуела Кента',
 		previewDiscription: 'Ручная вышивка, хлопок',  
-		altText:'футболка',
+		altText:'футболка, размер М',
 		urlToFullInformation: '/ru/collections/8/',
 		//en
 		titleEn: 't-shirt, one size M',
@@ -10506,7 +10551,7 @@ const goods = [
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок', 
-		altText:'футболка',
+		altText:'футболка, размер М',
 		urlToFullInformation: '/ru/collections/9/',
 		//en
 		titleEn: 't-shirt, one size M',
@@ -10531,7 +10576,7 @@ const goods = [
 		title: 'бомбер, размер М',
 		discription: 'Ручная вышивка',
 		previewDiscription: 'Ручная вышивка', 
-		altText:'бомбер',
+		altText:'бомбер, размер М',
 		urlToFullInformation: '/ru/collections/10/',
 		//en
 		titleEn: 'bomber',
@@ -10556,7 +10601,7 @@ const goods = [
 		title: 'футболка, размер М',
 		discription: 'Ручная вышивка, хлопок',
 		previewDiscription: 'Ручная вышивка, хлопок',
-		altText:'нет в продаже',
+		altText:'футболка, размер М',
 		urlToFullInformation: '/ru/collections/11/',
 		//en
 		titleEn: 't-shirt, one size M',
@@ -10577,6 +10622,160 @@ const goods = [
 			{link: '/img/collections/11/4.jpg', altText: 'product photo'},
 		],
 	},
+    {// ==================COLLECTION 2022================================
+        id: 12,
+		title: 'футболка и бомбер, размер L',
+		discription: 'Ручная вышивка, роспись акрилом',
+		previewDiscription: 'ручная вышивка, роспись акрилом',
+		altText:'футболка и бомбер, размер L',
+		urlToFullInformation: `/ru/collections/12/`,
+		//en
+		titleEn: 't-shirt & bomber, one size L',
+		discriptionEn: 'Embroidery, acrylic paint ',
+		previewDiscriptionEn: 'Embroidery',
+		altTextEn:'t-shirt & bomber, one size L',
+		urlToFullInformationEn: `/en/collections/12/`,
+		//common	
+		sale: false,
+		sliderImg: '/img/collections/12/preview-img/1.jpg',
+		collection: 2022,
+		gridStyleTamplate: 'template-galery_6',
+		galeryImages: [
+			{link: '/img/collections/12/1.jpg', altText: 'product photo'},
+			{link: '/img/collections/12/2.jpg', altText: 'product photo'},
+			{link: '/img/collections/12/3.jpg', altText: 'product photo'},
+			{link: '/img/collections/12/4.jpg', altText: 'product photo'},
+            {link: '/img/collections/12/5.jpg', altText: 'product photo'},
+            {link: '/img/collections/12/6.jpg', altText: 'product photo'},
+		],
+	},
+    {
+		title: 'кимоно-пальто, размер М',
+		discription: 'ручная вышивка',
+		previewDiscription: 'ручная вышивка',
+		altText:'кимоно-пальто, размер М',
+		urlToFullInformation: '/ru/collections/13/',
+		//en
+		titleEn: 'coat-kimono',
+		discriptionEn: 'Embroidery ',
+		previewDiscriptionEn: 'Embroidery',
+		altTextEn:'coat-kimono ',
+		urlToFullInformationEn: '/en/collections/13/',
+		//common
+		id:  13,
+		sale: false,
+		sliderImg: '/img/collections/13/preview-img/1.jpg',
+		collection: 2022,
+		gridStyleTamplate: 'template-galery_3',
+		galeryImages: [
+			{link: '/img/collections/13/1.jpg', altText: 'product photo'},
+			{link: '/img/collections/13/2.jpg', altText: 'product photo'},
+			{link: '/img/collections/13/3.jpg', altText: 'product photo'},
+			{link: '/img/collections/13/4.jpg', altText: 'product photo'},
+            {link: '/img/collections/13/5.jpg', altText: 'product photo'},
+		],
+	},
+    {
+		title: 'пончо, размер М/L',
+		discription: 'ручная вышивка, искусственная кожа, замша',
+		previewDiscription: 'Ручная вышивка, искусственная кожа',
+		altText:'нет в продаже',
+		urlToFullInformation: '/ru/collections/14/',
+		//en
+		titleEn: 'poncho, one size M/L',
+		discriptionEn: 'Embroidery, eco-lather, suede',
+		previewDiscriptionEn: 'Embroidery, eco-lather, suede ',
+		altTextEn:'t-shirt',
+		urlToFullInformationEn: '/en/collections/14/',
+		//common
+		id:  14,
+		sale: false,
+		sliderImg: '/img/collections/14/preview-img/1.jpg',
+		collection: 2022,
+		gridStyleTamplate: 'template-galery_8',
+		galeryImages: [
+			{link: '/img/collections/14/1.jpg', altText: 'product photo'},
+			{link: '/img/collections/14/2.jpg', altText: 'product photo'},
+			{link: '/img/collections/14/3.jpg', altText: 'product photo'},
+			{link: '/img/collections/14/4.jpg', altText: 'product photo'},
+            {link: '/img/collections/14/5.jpg', altText: 'product photo'},
+		],
+	},
+    {
+		title: 'футболка, размер L',
+		discription: 'ручная вышивка, хлопок',
+		previewDiscription: 'ручная вышивка, хлопок',
+		altText:'футболка, размер L',
+		urlToFullInformation: '/ru/collections/15/',
+		//en
+		titleEn: 't-shirt, one size L',
+		discriptionEn: 'Embroidery, cotton',
+		previewDiscriptionEn: 'Embroidery, cotton',
+		altTextEn:'t-shirt, one size L   ',
+		urlToFullInformationEn: '/en/collections/15/',
+		//common
+		id:  15,
+		sale: false,
+		sliderImg: '/img/collections/15/preview-img/1.jpg',
+		collection: 2022,
+		gridStyleTamplate: 'template-galery_11',
+		galeryImages: [
+			{link: '/img/collections/15/1.jpg', altText: 'product photo'},
+			{link: '/img/collections/15/2.jpg', altText: 'product photo'},
+			{link: '/img/collections/15/3.jpg', altText: 'product photo'},
+			{link: '/img/collections/15/4.jpg', altText: 'product photo'},
+		],
+	},
+    {
+		title: 'худи, размер М',
+		discription: 'ручная вышивка, кашемир',
+		previewDiscription: 'Ручная вышивка',
+		altText:'худи, размер М',
+		urlToFullInformation: '/ru/collections/16/',
+		//en
+		titleEn: 'hoody, one size M',
+		discriptionEn: 'Embroidery, cashmere, eco-leather',
+		previewDiscriptionEn: 'Embroidery, cashmere, eco-leather',
+		altTextEn:'hoody, one size M',
+		urlToFullInformationEn: '/en/collections/16/',
+		//common
+		id:  16,
+		sale: false,
+		sliderImg: '/img/collections/16/preview-img/1.jpg',
+		collection: 2022,
+		gridStyleTamplate: 'template-galery_9',
+		galeryImages: [
+			{link: '/img/collections/16/1.jpg', altText: 'product photo'},
+			{link: '/img/collections/16/2.jpg', altText: 'product photo'},
+			{link: '/img/collections/16/3.jpg', altText: 'product photo'},
+			{link: '/img/collections/16/4.jpg', altText: 'product photo'},
+		],
+	},
+    {
+		title: 'худи, размер М',
+		discription: 'ручная вышивка, кашемир',
+		previewDiscription: 'ручная вышивка',
+		altText:'худи, размер М',
+		urlToFullInformation: '/ru/collections/17/',
+		//en
+		titleEn: 'hoody, one size M',
+		discriptionEn: 'Embroidery, cashmere, eco-leather', 
+		previewDiscriptionEn: 'Embroidery, cashmere, eco-leather',
+		altTextEn:'hoody, one size M',
+		urlToFullInformationEn: '/en/collections/17/',
+		//common
+		id:  17,
+		sale: false,
+		sliderImg: '/img/collections/17/preview-img/1.jpg',
+		collection: 2022,
+		gridStyleTamplate: 'template-galery_9',
+		galeryImages: [
+			{link: '/img/collections/17/1.jpg', altText: 'product photo'},
+			{link: '/img/collections/17/2.jpg', altText: 'product photo'},
+			{link: '/img/collections/17/3.jpg', altText: 'product photo'},
+			{link: '/img/collections/17/4.jpg', altText: 'product photo'},
+		],
+	},
 ]; // весь список товара (аналог json, только в js объекте)
 
 
@@ -10588,7 +10787,7 @@ const globSiteInfo= {
 	totalProducts: goods.length,
 	nextProductPage: '',
 	prevProductPage: '',
-
+    promoScreenImages: 'type_1',
 	numPageFunc() {
 		if(this.arrCurrentLocation[this.arrCurrentLocation.length - 3] === 'collections') {
 			this.numPage = +this.arrCurrentLocation[this.arrCurrentLocation.length - 2]
@@ -10620,7 +10819,13 @@ const globSiteInfo= {
 			this.prevProductPage = this.numPage - 1;
 			this.nextProductPage = this.numPage + 1;
 		};
-	}
+	},
+    mainScreenPromoChanger() {
+        const toggle = localStorage.getItem('promoImgCollection') || 'type_1';
+        if (toggle && toggle === 'type_1') localStorage.setItem('promoImgCollection', 'type_2');
+        else localStorage.setItem('promoImgCollection', 'type_1');
+        this.promoScreenImages =  toggle;
+    }
 };
 
 globSiteInfo.currentLocationFunc();
@@ -10628,6 +10833,7 @@ globSiteInfo.arrCurrentLocationFunc();
 globSiteInfo.currentLanguageOfPageFunc();
 globSiteInfo.numPageFunc();
 globSiteInfo.productPageFunc();
+globSiteInfo.mainScreenPromoChanger();
 
 console.log(globSiteInfo) 
 
@@ -10635,6 +10841,7 @@ switch (globSiteInfo.currentLocation) {
 	case '/':
 	case '/en/':
 		renderCardsForSlider(goods);
+        renderPromoImages();
 		break;
 	case `/ru/collections/${globSiteInfo.numPage}/`:
 	case `/en/collections/${globSiteInfo.numPage}/`:
@@ -10658,6 +10865,7 @@ burger();
 activeClassesInNavMenu(globSiteInfo);
 dropdownRender(goods);
 currentYearForFuter();
+toggleSwiperYearCollection();
 
 //===================================================
 //функция для подключения webp
@@ -10768,16 +10976,28 @@ function renderPageOfCollections(goodsObj, forSale=false, year = false) {
 //функция добавляет карточки в слайдер
 function renderCardsForSlider(goodsObj) {
 	const swiperContainer2021 = document.querySelector('#collection-2021');
+    const swiperContainer2022 = document.querySelector('#collection-2022');
 
-	goodsObj.forEach(product => {
-		if (product.collection === 2021) {
-			const swiperSlide = document.createElement('div');
-			swiperSlide.classList.add('swiper-slide');
-			htmlGeneratorSliderTemlate(swiperSlide, product);
-			swiperContainer2021.append(swiperSlide);
-		}
-	});
+    appendSliderToPage (swiperContainer2021, 2021)
+    appendSliderToPage (swiperContainer2022, 2022)
+
+    function appendSliderToPage (htmlElementId, year) {
+        goodsObj.forEach(product => {
+            if (product.collection === year) {
+                const swiperSlide = document.createElement('div');
+                swiperSlide.classList.add('swiper-slide');
+                htmlGeneratorSliderTemlate(swiperSlide, product);
+                htmlElementId.append(swiperSlide);
+            }
+        });
+    }
+	
 };
+
+function renderPromoImages() {
+    const promoWrapper = document.querySelector('.promo__flex-wrapper');
+    promoWrapper.innerHTML = htmlGeneratorMainScreenPromoImages()
+}
 
 //функция рисует содержиме страницы с полным отображением одного товара и галереей изобраджений
 function renderPageOfProduct(goodsObj, numPage) {
@@ -10819,21 +11039,74 @@ function currentYearForFuter(){
 }
 
 //===================================================
-//slider-swiper
-const swiper = new Swiper('.swiper', {
-	speed: 400,
-	spaceBetween: 20,
-	loop: true,
-	breakpoints: {
-	// when window width is >= 320px
-		320: {
-			slidesPerView: 1,
-		},
-		641: {
-			slidesPerView: 6,
-		}
-	},
-	autoplay: {
-		delay: 1500,
-	},
-});
+//slider-swipers
+const swiperConfig = {
+    speed: 400,
+    spaceBetween: 20,
+    loop: true,
+    
+autoHeight: true,
+    
+    breakpoints: {
+    // when window width is >= 320px
+        320: {
+            slidesPerView: 1,
+        },
+        641: {
+            slidesPerView: 6,
+        }
+    },
+    autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+    },
+}
+
+function swiperMainFunction () {
+
+}
+
+let swiper2021 = new Swiper('.swiper_2021', swiperConfig );
+let swiper2022 = new Swiper('.swiper_2022', swiperConfig );
+
+//====toggle swiper=====
+function toggleSwiperYearCollection () {
+    
+    const buttons = document.querySelectorAll('.promo__change');
+    const swipers = document.querySelectorAll('.promo__slider-swiper');
+
+    buttons.forEach(e => e.addEventListener('click', () => toggle(e)))
+
+    function toggle(e) {
+        removeActiveClasses(buttons);
+        removeActiveClasses(swipers);
+        e.classList.add('active');
+        // console.log(e.dataset.year)
+        addActiveToSwiper(e.dataset.year)
+        // swiper2021.autoplay.running = true
+        // swiper2022.autoplay.running = true
+        swiper2021.destroy(false, false)
+        swiper2022.destroy(false, false) 
+        swiper2021 = new Swiper('.swiper_2021', swiperConfig );
+        swiper2022 = new Swiper('.swiper_2022', swiperConfig );
+        // swiper2021.autoplay.run()
+        // swiper2022.autoplay.run()
+        // swiper2021.autoplay.start()
+        // swiper2022.autoplay.start()
+
+    }
+
+    function addActiveToSwiper (yearOfCollection) {
+        swipers.forEach(e => {
+            if(yearOfCollection === e.dataset.year) {
+                e.classList.add('active')
+            }
+        })
+
+        
+
+    }
+
+    function removeActiveClasses (arr) {arr.forEach(e=>e.classList.remove('active'))}
+    
+}

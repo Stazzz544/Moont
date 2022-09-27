@@ -65,13 +65,13 @@ function htmlGeneratorSliderTemlate(swiperSlide, product) {
 				${globSiteInfo.enLang ? 
 				`<a href=${product.urlToFullInformationEn}>
 					<div class="card-type-1__img-wrapper">
-						<img src=${product.sliderImg} alt=${product.altTextEn}>
+						<img class="card-type-1__img" src=${product.sliderImg} alt=${product.altTextEn}>
 					</div>
 				</a>`
 				:
 				`<a href=${product.urlToFullInformation}>
 					<div class="card-type-1__img-wrapper">
-						<img src=${product.sliderImg} alt=${product.altText}>
+						<img  class="card-type-1__img" src=${product.sliderImg} alt=${product.altText}>
 					</div>
 				</a>`
 				}
@@ -194,3 +194,48 @@ function htmlGeneratorNextPrevArrow(prevPage, nextPage) {
 		</div>
 	`;
 };
+
+
+function htmlGeneratorMainScreenPromoImages() {
+    return (
+        globSiteInfo.promoScreenImages === "type_1" &&
+        `<div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/1.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img" src="/img/home_page/2.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item">
+              <img class="promo__img" src="/img/home_page/3.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/4.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img for-huge-screen" src="/img/home_page/5.jpg" alt="promo-img">
+          </div>
+          <div class="promo__center-logo-wrapper">
+              <img class="promo__center-logo-img" src="/img/home_page/logo/center_logo.svg" alt="logo">
+          </div>`
+        ||
+        globSiteInfo.promoScreenImages === "type_2" &&
+        `<div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/6-1.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img" src="/img/home_page/7-1.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item">
+              <img class="promo__img" src="/img/home_page/8.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-huge-screen">
+              <img class="promo__img" src="/img/home_page/9.jpg" alt="promo-img">
+          </div>
+          <div class="promo__flex-item for-screen-and-tablet">
+              <img class="promo__img for-huge-screen" src="/img/home_page/10.jpg" alt="promo-img">
+          </div>
+          <div class="promo__center-logo-wrapper">
+              <img class="promo__center-logo-img" src="/img/home_page/logo/center_logo.svg" alt="logo">
+          </div>
+      `);
+  }

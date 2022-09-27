@@ -1288,6 +1288,10 @@ html {
   text-align: center;
 }
 
+.card-type-1__img {
+  min-height: 588px;
+}
+
 .card-type-2__flex-wrapper {
   width: 360px;
   height: 100%;
@@ -1401,7 +1405,7 @@ html {
 .footer__location {
   margin-top: 11px;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 20px;
   letter-spacing: 0.1em;
 }
 
@@ -1569,7 +1573,7 @@ html {
 }
 
 .promo__change {
-  font-weight: normal;
+  font-weight: 300;
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.1em;
@@ -1577,9 +1581,32 @@ html {
   margin-bottom: 13px;
 }
 
+.promo__change.active {
+  font-weight: 500;
+}
+
 .promo__slider-swiper {
   height: auto;
   width: 2830px;
+  display: none;
+}
+
+.promo__slider-swiper.active {
+  display: block;
+  overflow: hidden;
+}
+
+.promo__slider-collection-tab-btnWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 30px;
+     -moz-column-gap: 30px;
+          column-gap: 30px;
+}
+
+.active {
+  display: block;
 }
 
 .about {

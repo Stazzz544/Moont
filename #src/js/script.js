@@ -11,7 +11,7 @@ const globSiteInfo= {
 	totalProducts: goods.length,
 	nextProductPage: '',
 	prevProductPage: '',
-
+    promoScreenImages: 'type_1',
 	numPageFunc() {
 		if(this.arrCurrentLocation[this.arrCurrentLocation.length - 3] === 'collections') {
 			this.numPage = +this.arrCurrentLocation[this.arrCurrentLocation.length - 2]
@@ -43,7 +43,13 @@ const globSiteInfo= {
 			this.prevProductPage = this.numPage - 1;
 			this.nextProductPage = this.numPage + 1;
 		};
-	}
+	},
+    mainScreenPromoChanger() {
+        const toggle = localStorage.getItem('promoImgCollection') || 'type_1';
+        if (toggle && toggle === 'type_1') localStorage.setItem('promoImgCollection', 'type_2');
+        else localStorage.setItem('promoImgCollection', 'type_1');
+        this.promoScreenImages =  toggle;
+    }
 };
 
 globSiteInfo.currentLocationFunc();
@@ -51,6 +57,7 @@ globSiteInfo.arrCurrentLocationFunc();
 globSiteInfo.currentLanguageOfPageFunc();
 globSiteInfo.numPageFunc();
 globSiteInfo.productPageFunc();
+globSiteInfo.mainScreenPromoChanger();
 
 console.log(globSiteInfo) 
 
@@ -58,6 +65,7 @@ switch (globSiteInfo.currentLocation) {
 	case '/':
 	case '/en/':
 		renderCardsForSlider(goods);
+        renderPromoImages();
 		break;
 	case `/ru/collections/${globSiteInfo.numPage}/`:
 	case `/en/collections/${globSiteInfo.numPage}/`:
@@ -81,6 +89,7 @@ burger();
 activeClassesInNavMenu(globSiteInfo);
 dropdownRender(goods);
 currentYearForFuter();
+toggleSwiperYearCollection();
 
 //===================================================
 //функция для подключения webp
@@ -191,16 +200,28 @@ function renderPageOfCollections(goodsObj, forSale=false, year = false) {
 //функция добавляет карточки в слайдер
 function renderCardsForSlider(goodsObj) {
 	const swiperContainer2021 = document.querySelector('#collection-2021');
+    const swiperContainer2022 = document.querySelector('#collection-2022');
 
-	goodsObj.forEach(product => {
-		if (product.collection === 2021) {
-			const swiperSlide = document.createElement('div');
-			swiperSlide.classList.add('swiper-slide');
-			htmlGeneratorSliderTemlate(swiperSlide, product);
-			swiperContainer2021.append(swiperSlide);
-		}
-	});
+    appendSliderToPage (swiperContainer2021, 2021)
+    appendSliderToPage (swiperContainer2022, 2022)
+
+    function appendSliderToPage (htmlElementId, year) {
+        goodsObj.forEach(product => {
+            if (product.collection === year) {
+                const swiperSlide = document.createElement('div');
+                swiperSlide.classList.add('swiper-slide');
+                htmlGeneratorSliderTemlate(swiperSlide, product);
+                htmlElementId.append(swiperSlide);
+            }
+        });
+    }
+	
 };
+
+function renderPromoImages() {
+    const promoWrapper = document.querySelector('.promo__flex-wrapper');
+    promoWrapper.innerHTML = htmlGeneratorMainScreenPromoImages()
+}
 
 //функция рисует содержиме страницы с полным отображением одного товара и галереей изобраджений
 function renderPageOfProduct(goodsObj, numPage) {
@@ -242,21 +263,74 @@ function currentYearForFuter(){
 }
 
 //===================================================
-//slider-swiper
-const swiper = new Swiper('.swiper', {
-	speed: 400,
-	spaceBetween: 20,
-	loop: true,
-	breakpoints: {
-	// when window width is >= 320px
-		320: {
-			slidesPerView: 1,
-		},
-		641: {
-			slidesPerView: 6,
-		}
-	},
-	autoplay: {
-		delay: 1500,
-	},
-});
+//slider-swipers
+const swiperConfig = {
+    speed: 400,
+    spaceBetween: 20,
+    loop: true,
+    
+autoHeight: true,
+    
+    breakpoints: {
+    // when window width is >= 320px
+        320: {
+            slidesPerView: 1,
+        },
+        641: {
+            slidesPerView: 6,
+        }
+    },
+    autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+    },
+}
+
+function swiperMainFunction () {
+
+}
+
+let swiper2021 = new Swiper('.swiper_2021', swiperConfig );
+let swiper2022 = new Swiper('.swiper_2022', swiperConfig );
+
+//====toggle swiper=====
+function toggleSwiperYearCollection () {
+    
+    const buttons = document.querySelectorAll('.promo__change');
+    const swipers = document.querySelectorAll('.promo__slider-swiper');
+
+    buttons.forEach(e => e.addEventListener('click', () => toggle(e)))
+
+    function toggle(e) {
+        removeActiveClasses(buttons);
+        removeActiveClasses(swipers);
+        e.classList.add('active');
+        // console.log(e.dataset.year)
+        addActiveToSwiper(e.dataset.year)
+        // swiper2021.autoplay.running = true
+        // swiper2022.autoplay.running = true
+        swiper2021.destroy(false, false)
+        swiper2022.destroy(false, false) 
+        swiper2021 = new Swiper('.swiper_2021', swiperConfig );
+        swiper2022 = new Swiper('.swiper_2022', swiperConfig );
+        // swiper2021.autoplay.run()
+        // swiper2022.autoplay.run()
+        // swiper2021.autoplay.start()
+        // swiper2022.autoplay.start()
+
+    }
+
+    function addActiveToSwiper (yearOfCollection) {
+        swipers.forEach(e => {
+            if(yearOfCollection === e.dataset.year) {
+                e.classList.add('active')
+            }
+        })
+
+        
+
+    }
+
+    function removeActiveClasses (arr) {arr.forEach(e=>e.classList.remove('active'))}
+    
+}
