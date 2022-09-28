@@ -10787,7 +10787,7 @@ const globSiteInfo= {
 	totalProducts: goods.length,
 	nextProductPage: '',
 	prevProductPage: '',
-    promoScreenImages: 'type_1',
+    promoScreenImages: 'type_2',
 	numPageFunc() {
 		if(this.arrCurrentLocation[this.arrCurrentLocation.length - 3] === 'collections') {
 			this.numPage = +this.arrCurrentLocation[this.arrCurrentLocation.length - 2]
@@ -10821,7 +10821,7 @@ const globSiteInfo= {
 		};
 	},
     mainScreenPromoChanger() {
-        const toggle = localStorage.getItem('promoImgCollection') || 'type_1';
+        const toggle = localStorage.getItem('promoImgCollection') || 'type_2';
         if (toggle && toggle === 'type_1') localStorage.setItem('promoImgCollection', 'type_2');
         else localStorage.setItem('promoImgCollection', 'type_1');
         this.promoScreenImages =  toggle;
